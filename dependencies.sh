@@ -52,11 +52,29 @@ fi
 
 ## check the existing off grunt
 noGrunt=false
-which grunt || noGrunt=true
+npm ls | grep grunt || noGrunt=true
 if $noGrunt; then
 	## install grunt js
 	echo "Installing grunt ..."
 	npm install -g grunt
 else 
 	echo "Grunt already installed"
+fi
+
+## check the existing off Closure Compiler
+noCc=false
+npm ls | grep grunt-closure-compiler || noCc=true
+if $noCc; then
+	npm install grunt-closure-compiler
+else
+	echo "Closure compiler already installed"
+fi
+
+## check the existing off Coffee Lint
+noCl=false
+npm ls | grep grunt-coffeelint || noCl=true
+if $noCl; then
+	npm install grunt-coffeelint
+else
+	echo "Coffee lint already installed"
 fi
