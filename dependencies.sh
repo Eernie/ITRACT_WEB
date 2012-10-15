@@ -78,3 +78,13 @@ if $noCl; then
 else
 	echo "Coffee lint already installed"
 fi
+
+## check the existing off Jasmine runner
+noJr=false
+npm ls | grep grunt-jasmine-runner || noJr=true
+if $noJr; then
+	npm install grunt-jasmine-runner
+else
+	echo "Jasmine Runner already installed"
+fi
+
