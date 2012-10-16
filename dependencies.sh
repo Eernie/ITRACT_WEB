@@ -50,6 +50,16 @@ else
 	echo "npm already installed"
 fi
 
+## check the existing off Coffee
+noCoffee=false
+which coffee || noCoffee=true
+if $noCoffee; then
+	## install npm js
+	npm install -g coffee-script
+else
+	echo "Coffee script already installed"
+fi
+
 ## check the existing off grunt
 noGrunt=false
 npm ls | grep grunt || noGrunt=true
