@@ -20,7 +20,7 @@ $rep update
 
 ##install dependencies
 
-$rep install git-core curl build-essential openssl libssl-dev
+$rep install git-core curl build-essential openssl libssl-dev optipng phantomjs ruby rubygems
 
 ## check the existing off node
 noNode=false
@@ -106,4 +106,19 @@ if $noHb; then
 	npm install -g handlebars -g
 else
 	echo "Handlebars already installed"
+fi
+
+## check the existing off Yeoman
+noYm=false
+which yeoman || noYm=true
+if $noYm; then
+	if $linux;then 
+		$rep install libjpeg-progs
+	else
+		$rep install jpeg-turbo
+	fi
+	gem install compass
+	npm install -g yeoman
+else
+	echo "Yeoman allready installed"
 fi
