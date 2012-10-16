@@ -98,3 +98,12 @@ else
 	echo "Jasmine Runner already installed"
 fi
 
+
+## check the existing off Handlebars
+noHb=false
+which handlebars || noHb=true
+if $noHb; then
+	npm install -g handlebars -g
+else
+	echo "Handlebars already installed"
+fi
