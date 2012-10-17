@@ -1,0 +1,36 @@
+TypeError: 'undefined' is not an object (evaluating 'Handlebars.templates.todo')
+
+  http://localhost:3501/scripts/87dbb78f.scripts.js:1
+  http://localhost:3501/scripts/87dbb78f.scripts.js:1
+  http://localhost:3501/scripts/87dbb78f.scripts.js:1
+# Hello from Backbone! (undefined, #undefined)
+# [object Object] (undefined, #undefined)
+CACHE MANIFEST
+
+# Time: Wed Oct 17 2012 10:24:44 GMT+0200 (CEST)
+# This manifest was created by confess.js, http://github.com/jamesgpearce/confess
+#
+# Retrieved URL: http://localhost:3501/
+# User-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#
+# Config:
+#  task: appcache
+#  userAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#  wait: 0
+#  consolePrefix: #
+#  verbose: true
+#  appcache:
+#   urlsFromDocument: true
+#   urlsFromRequests: false
+#   cacheFilter: .*
+#   networkFilter: null
+#  url: http://localhost:3501
+#  configFile: /usr/local/lib/node_modules/yeoman/lib/support/confess.json
+
+CACHE:
+http://www.google-analytics.com/ga.js
+scripts/87dbb78f.scripts.js
+styles/051c0509.main.css
+
+NETWORK:
+*

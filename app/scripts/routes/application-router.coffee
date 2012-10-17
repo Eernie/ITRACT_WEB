@@ -1,0 +1,1 @@
+class shuttledrive.Routers.ApplicationRouter extends Backbone.Router
