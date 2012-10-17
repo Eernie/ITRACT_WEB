@@ -176,7 +176,4 @@ module.exports = function( grunt ) {
   // Alias the `test` task to run the `jasmine` task instead
   grunt.registerTask('test', 'jasmine');
 
-  // compile handlebars
-  grunt.loadNpmTasks('grunt-compile-handlebars');
-
 };
