@@ -7,7 +7,7 @@ TypeError: 'undefined' is not an object (evaluating 'Handlebars.templates.todo')
 # [object Object] (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Wed Oct 17 2012 10:24:44 GMT+0200 (CEST)
+# Time: Wed Oct 17 2012 13:02:03 GMT+0200 (CEST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/
