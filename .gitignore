@@ -3,3 +3,10 @@
 .DS_Store
 dist/*
 temp/*
+
+#intellij/webstorm
+*.iml
+.idea/*
+
+#sass files
+.sass-cache/*
