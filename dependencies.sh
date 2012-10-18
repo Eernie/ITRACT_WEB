@@ -20,7 +20,7 @@ $rep update
 
 ##install dependencies
 
-$rep install git-core curl build-essential openssl libssl-dev optipng phantomjs ruby rubygems
+$rep install git-core curl build-essential openssl libssl-dev optipng ruby rubygems
 
 ## check the existing off node
 noNode=false
@@ -48,6 +48,17 @@ if $noNpm; then
 	curl https://npmjs.org/install.sh | sh
 else 
 	echo "npm already installed"
+fi
+
+## check the existing off npm
+noPj=false
+which phantomjs || noPj=true
+if $noPj; then
+	## install npm js
+	echo "Installing Phantom js ..."
+	npm install -g phantomjs
+else 
+	echo "Phantom js allready installed"
 fi
 
 ## check the existing off Coffee
