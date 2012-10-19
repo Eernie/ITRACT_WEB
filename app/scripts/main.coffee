@@ -9,3 +9,4 @@ window.shuttledriveWeb =
 $(document).ready ->
   shuttledriveWeb.init()
   applicationModel = new shuttledriveWeb.Models.ApplicationModel()
+  view = new shuttledriveWeb.Views.ApplicationView()

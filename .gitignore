@@ -1,5 +1,3 @@
-#Nader in te vullen
-
 .DS_Store
 dist/*
 temp/*
@@ -10,3 +8,6 @@ temp/*
 
 #sass files
 .sass-cache/*
+
+# ingore js files in spec folder
+test/spec/*.js
