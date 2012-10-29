@@ -6,7 +6,7 @@ window.shuttledriveWeb =
   init: ->
     new shuttledriveWeb.Routers.ApplicationRouter()
     Backbone.history.start()
-
+    
 $(document).ready ->
   shuttledriveWeb.init()
   applicationModel = new shuttledriveWeb.Models.ApplicationModel()

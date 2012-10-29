@@ -1,2 +1,2 @@
-define [], ->
-  "Hello from Yeoman!"
+define ['Backbone', 'localhost:5000'], ->
+  
