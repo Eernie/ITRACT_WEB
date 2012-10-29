@@ -8,4 +8,4 @@ window.shuttledriveWeb =
 
 $(document).ready ->
   shuttledriveWeb.init()
-  view = new shuttledriveWeb.Views.ApplicationView()
+  applicationView = new shuttledriveWeb.Views.ApplicationView()

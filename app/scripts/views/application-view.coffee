@@ -1,12 +1,23 @@
 class shuttledriveWeb.Views.ApplicationView extends Backbone.View
-	el: $ '.cheerio'
+	el: $ '.application'
 
-	initialize: ->
-  	console.log 'initialize'
-  	@render()
+	events:
+  		"click #trip-request-submit": "createOnSubmit"
 
-  render: ->
-  	template = Handlebars.compile($('#template').html())
-  	context = {content: ' CHEERIO MATE!'}
-  	console.log template(context)
-  	$(@el).html(template(context))
+  	initialize: ->
+  		_.bindAll(@)
+  		@render()
+
+	render: ->
+		template = Handlebars.compile($('#template').html())
+		context = {content: ' CHEERIO MATE!'}
+		$(@el).html(template(context))
+
+	createOnSubmit: ->
+		console.log "createOnSubmit"
+		from = $('#from').val()
+		to = $('#to').val()
+		tripRequest = new shuttledriveWeb.Models.TripRequestModel from, to
+		tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
+		console.log tripRequestView
+		$('#trip-request-view').html(tripRequestView.render())
