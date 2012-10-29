@@ -9,3 +9,4 @@ window.shuttledriveWeb =
 $(document).ready ->
   shuttledriveWeb.init()
   applicationView = new shuttledriveWeb.Views.ApplicationView()
+  window.foo = new shuttledriveWeb.Models.TripRequestModel()

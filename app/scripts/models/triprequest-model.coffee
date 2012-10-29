@@ -1,15 +1,18 @@
 class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     defaults:
         user: 'Cheerio!'
+        originAddress: ''
         originLat: 0
         originLong: 0
+        destinationAddress: ''
         destinationLat: 0
         destinationLong: 0
 
-    constructor: (origin, destination) ->
-        currentTime = new Date()
+    fetchCoordinates: (origin, destination) ->
+        @.set 'originAddress': origin
+        @.set 'destinationAddress': destination
         @getLatLong @, origin, @originCallback
-        # @getLatLong @, destination, @destinationCallback
+        @getLatLong @, destination, @destinationCallback
 
     getLatLong: (caller, address, callback) ->
         geocoder = new google.maps.Geocoder()
@@ -20,10 +23,9 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
             # else throw error TODO: add throw statement
 
     originCallback: (caller, result) ->
-        console.log caller.defaults
         caller.set 'originLat': result.Ya
         caller.set 'originLong':  result.Za
 
     destinationCallback: (caller, result) ->
-        caller.destinationLat = result.Ya
-        caller.destinationLong = result.Za
+        caller.set 'destinationLat': result.Ya
+        caller.set 'destinationLong': result.Za

@@ -24,7 +24,6 @@
 
         <!-- Add your site or application content here -->
         <script id="template" type="text/x-handlebars-template">
-            <h2>Cheerio from Handlebars{{content}}</h2>
             <div class="row">
             <div class="span6">
             <div class="hero-unit">
@@ -43,7 +42,7 @@
                 </div>
                 <div class="control-group">
                     <div class="controls">
-                        <button type="submit" class="btn" id="trip-request-submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="trip-request-submit">Submit</button>
                     </div>
                 </div>
             </div>
@@ -56,11 +55,13 @@
 
         <script id="triprequest" type="text/x-handlebars-template">
             <div class="triprequest">
-            {{user}}
-            <p>originLat: {{originLat}}</p>
-            <p>originLong: {{originLong}}</p>
-            <p>destinationLat: </p>
-            <p>destinationLong: </p>
+            <p>User: {{user}}</p>
+            <p>Origin Address: {{originAddress}}</p>
+            <p>Origin Latitude: {{originLat}}</p>
+            <p>Origin Longitude: {{originLong}}</p>
+            <p>Destination Address: {{destinationAddress}}</p>
+            <p>destinationLat: {{destinationLat}}</p>
+            <p>destinationLong: {{destinationLong}}</p>
             </div>
         </script>
 
