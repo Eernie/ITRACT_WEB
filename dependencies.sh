@@ -133,3 +133,12 @@ if $noYm; then
 else
 	echo "Yeoman allready installed"
 fi
+
+## check the existing off Jasmine runner
+noGh=false
+npm ls | grep grunt-handlebars || noGh=true
+if $noGh; then
+	npm install grunt-handlebars
+else
+	echo "Grunt-handlebars already installed"
+fi
