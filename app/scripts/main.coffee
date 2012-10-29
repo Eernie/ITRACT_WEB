@@ -4,9 +4,9 @@ window.shuttledriveWeb =
   Views: {}
   Routers: {}
   init: ->
-    console.log "Hello from Backbone!"
+    new shuttledriveWeb.Routers.ApplicationRouter()
+    Backbone.history.start()
 
 $(document).ready ->
   shuttledriveWeb.init()
   applicationModel = new shuttledriveWeb.Models.ApplicationModel()
-  view = new shuttledriveWeb.Views.ApplicationView()
