@@ -11,3 +11,5 @@ temp/*
 
 # ingore js files in spec folder
 test/spec/*.js
+
+node_modules/*

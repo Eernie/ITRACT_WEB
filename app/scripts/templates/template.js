@@ -1,0 +1,1 @@
+(function(){var a=Handlebars.template,b=Handlebars.templates=Handlebars.templates||{};b.applicationView=a(function(a,b,c,d,e){c=c||a.helpers;var f,g=this;return"<div>\n	Dit een test\n</div>"})})()

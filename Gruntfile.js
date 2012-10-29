@@ -28,6 +28,14 @@ module.exports = function( grunt ) {
       }
     },
 
+
+    handlebars: {
+      all: {
+        src: 'app/templates',
+        dest: 'app/scripts/templates/template.js'
+      }
+    },
+
     // compile .scss/.sass to .css using Compass
     compass: {
       dist: {
@@ -66,6 +74,13 @@ module.exports = function( grunt ) {
           'app/styles/**/*.{scss,sass}'
         ],
         tasks: 'compass reload'
+      },
+      handlebars: {
+        files: [
+        'app/templates/*.handlebars',
+        'app/templates/**/*.handlebars'
+        ],
+        tasks: 'handlebars'
       },
       reload: {
         files: [
@@ -175,9 +190,11 @@ module.exports = function( grunt ) {
       baseUrl: './scripts',
       wrap: true
     },
+
+
   });
 
   // Alias the `test` task to run the `jasmine` task instead
   grunt.registerTask('test', 'jasmine');
-
+  grunt.loadNpmTasks('grunt-handlebars');
 };
