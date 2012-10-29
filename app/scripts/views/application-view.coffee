@@ -1,12 +1,11 @@
 class shuttledriveWeb.Views.ApplicationView extends Backbone.View
-	el: $ '.cheerio'
+	el: $ '.content'
 
 	initialize: ->
   	console.log 'initialize'
   	@render()
 
   render: ->
-  	template = Handlebars.compile($('#template').html())
-  	context = {content: ' CHEERIO MATE!'}
-  	console.log template(context)
-  	$(@el).html(template(context))
+  		
+  	context = {}
+  	$(@el).html(Handlebars.templates['applicationView'](context))
