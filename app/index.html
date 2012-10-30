@@ -10,10 +10,29 @@
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" href="styles/main.css"/>
+        <style type="text/css">
+            .hero-unit {
+                opacity: 0.9; /* opacity [0-1] */
+                -moz-opacity: 0.9; /* opacity [0-1] */
+                -webkit-opacity: 0.9; /* opacity [0-1] */
+            }
+
+            .opaque {
+                opacity: 1!important; /* opacity [0-1] */
+                -moz-opacity: 1!important; /* opacity [0-1] */
+                -webkit-opacity: 1!important;
+                z-index: 100;
+            }
+        </style>
 
     </head>
-    <body>
+    <body style="background: url('images/highway.jpg');">
     <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h1>Shuttledrive</h1>
+            </div>
+        </div>
         <div class="application">
             
         </div>
@@ -55,6 +74,7 @@
 
         <script id="triprequest" type="text/x-handlebars-template">
             <div class="triprequest">
+            <h3>Trip request</h3>
             <p>User: {{user}}</p>
             <p>Origin Address: {{originAddress}}</p>
             <p>Origin Latitude: {{originLat}}</p>
@@ -62,8 +82,16 @@
             <p>Destination Address: {{destinationAddress}}</p>
             <p>destinationLat: {{destinationLat}}</p>
             <p>destinationLong: {{destinationLong}}</p>
+            <div class="opaque">
+                <img src="http://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap
+    &markers=color:blue%7Clabel:S%7C{{originLat}}, {{originLong}}&markers=color:green%7Clabel:G%7C{{destinationLat}}, {{destinationLong}}&sensor=false"></img>
+            </div>
             </div>
         </script>
+
+        <div>
+            <img src="images/shuttledrive2.png" align="right">
+        </div>
 
         <!-- build:js scripts/scripts.js -->
         <script src="scripts/vendor/jquery.min.js"></script>
