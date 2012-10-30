@@ -1,10 +1,22 @@
 class shuttledriveWeb.Views.MatchView extends Backbone.View
-	el: $ '.content'
+    el: $ '#content'
+    model: shuttledriveWeb.Models.tripMatchesModel
+    request = ''
 
-	initialize: ->
-		allMatches = new shuttledriveWeb.Collections.MatchCollection()
-		all = allMatches.fetch()
-		@render()
+    setModel: (data) ->
+        @model = data
+        _.bindAll @, 'render'
+        @model.bind 'change', @render
 
-	render: ->
-		
+        @render()
+
+    render:  ->
+
+        console.log @model 
+        context = {
+            "request" :@model.attributes.tripRequest,
+            "matches" :@model.attributes.tripMatches
+        }
+        console.log context
+        $(@el).html(Handlebars.templates['matchView'](context))
+

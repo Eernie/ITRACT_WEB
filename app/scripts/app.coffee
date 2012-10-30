@@ -1,2 +1,2 @@
-define ['Backbone', 'localhost:5000'], ->
+define [], ->
   
