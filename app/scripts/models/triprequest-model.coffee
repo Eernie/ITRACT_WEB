@@ -1,16 +1,26 @@
 class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     defaults:
-        user: 'Cheerio!'
+        user: 1
         originAddress: ''
         originLat: 0
         originLong: 0
         destinationAddress: ''
         destinationLat: 0
         destinationLong: 0
+        startTimeMin: 0
+        startTimeMax: 0
+        endTimeMin: 0
+        endTimeMax: 0
+        numberOfSeats: 0
+
+    urlRoot: 'http://localhost:5000/trip_request'
+
+    initialize: ->
+        @bind('change', @save)
 
     fetchCoordinates: (origin, destination) ->
-        @.set 'originAddress': origin
-        @.set 'destinationAddress': destination
+        @set 'originAddress': origin
+        @set 'destinationAddress': destination
         @getLatLong @, origin, @originCallback
         @getLatLong @, destination, @destinationCallback
 
