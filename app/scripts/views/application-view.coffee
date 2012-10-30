@@ -20,5 +20,6 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
 		tripRequest = new shuttledriveWeb.Models.TripRequestModel()
 		tripRequest.fetchCoordinates from, to
 		tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
+		
 		console.log tripRequestView
 		$('#trip-request-view').html(tripRequestView.render())
