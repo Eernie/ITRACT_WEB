@@ -14,4 +14,3 @@ test/spec/*.js
 
 node_modules/*
 
-app/scripts/templates/template.js
