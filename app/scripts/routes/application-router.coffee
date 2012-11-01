@@ -8,7 +8,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         match = new shuttledriveWeb.Models.TripMatchesModel({id: 1})
         match.fetch
             success: (data) ->
-                console.log data
                 view = new shuttledriveWeb.Views.MatchView()
                 view.setModel(data)
             error: (data,error) ->
