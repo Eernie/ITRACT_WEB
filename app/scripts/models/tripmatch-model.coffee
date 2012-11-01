@@ -1,4 +1,4 @@
-class shuttledriveWeb.Models.tripMatchesModel extends Backbone.Model
+class shuttledriveWeb.Models.TripMatchesModel extends Backbone.Model
     url: ->
         'http://localhost:5000/match/'+@id
 
@@ -22,5 +22,6 @@ class shuttledriveWeb.Models.tripMatchesModel extends Backbone.Model
 
     originCallback: (caller, result) ->
         caller.set 'originAddress': result.formated_address
+        
     destinationCallback: (caller, result) ->
         caller.set 'destinationAddress': result.formated_address

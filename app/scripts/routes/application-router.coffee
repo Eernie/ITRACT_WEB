@@ -4,7 +4,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "" : "indexRoute"
 
     matchesRoute: ->
-        match = new shuttledriveWeb.Models.tripMatchesModel id: 1
+        match = new shuttledriveWeb.Models.TripMatchesModel({id: 1})
         match.fetch
             success: (data) ->
                 console.log data

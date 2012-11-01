@@ -1,11 +1,12 @@
 window.shuttledriveWeb =
-  Models: {}
-  Collections: {}
-  Views: {}
-  Routers: {}
-  init: ->
-    new shuttledriveWeb.Routers.ApplicationRouter()
-    Backbone.history.start()
+    Models: {}
+    Collections: {}
+    Views: {}
+    Routers: {}
+    init: ->
+        new shuttledriveWeb.Routers.ApplicationRouter()
+        Backbone.history.start()
     
 $(document).ready ->
-  shuttledriveWeb.init()
+    shuttledriveWeb.init()
+    console.log shuttledriveWeb
