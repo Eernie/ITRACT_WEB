@@ -5,7 +5,6 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         "click #trip-request-submit": "createOnSubmit"
 
     initialize: ->
-        console.log 'init ApplicationView'
         _.bindAll(@)
         @render()
 
@@ -24,7 +23,6 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         +date # convert to unix timestamp
 
     createOnSubmit: ->
-        console.log "createOnSubmit"
         from = $('#from').val()
         to = $('#to').val()
         departureStart = @createDate $('#departure-start').val()
@@ -36,3 +34,24 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
 
         $('#trip-request-view').html(tripRequestView.render())
+
+        tripRequest.save(
+            tripRequest.toJSON()
+        ,
+            success: ->
+                match = new shuttledriveWeb.Models.TripMatchesModel({id: tripRequest.get('request_id')})
+                match.fetch
+                    success: (data) ->
+                        view = new shuttledriveWeb.Views.MatchView({model: data})
+                        $('#trip-matches').html(view.render())
+                    error: (data,error) ->
+                        console.log error
+                        console.log 'fail'
+            fail: (error) ->
+                console.log "Failed"
+                console.log error
+        )
+
+
+
+        

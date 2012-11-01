@@ -12,11 +12,12 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         endTimeMin: 0
         endTimeMax: 0
         numberOfSeats: 0
+        request_end_time_max: 0
+        request_id: 0
 
     urlRoot: 'http://localhost:5000/trip_request'
 
     initialize: ->
-        console.log 'init TripRequestModel'
         @bind('change', @save) # TODO: maybe refactor to only send a request when all data has been fetched from Google
 
     fetchCoordinates: (origin, destination) ->

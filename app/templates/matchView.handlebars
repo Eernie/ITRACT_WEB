@@ -1,11 +1,7 @@
 <div class="hero-unit">
-	<h1> Availible Matches </h1>
-
-	Your Request {{request.request_origin}} to {{request.request_destination}}
-
-	<h3> Matches </h3>
+	<h3> Availible Matches </h3>
 	{{#each matches}}
-	From {{offer_origin}}  -- {{offer_destination}}
+	<span class="label label-info">{{offer_origin}}  -> {{offer_destination}}</span>
 	<br />
 	{{/each}}
 </div>
