@@ -1,1 +1,22 @@
 @import "compass_twitter_bootstrap";
+
+body {
+	background: url(../images/Highway.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.hero-unit {
+    opacity: 0.9; /* opacity [0-1] */
+    -moz-opacity: 0.9; /* opacity [0-1] */
+    -webkit-opacity: 0.9; /* opacity [0-1] */
+}
+
+.opaque {
+    opacity: 1!important; /* opacity [0-1] */
+    -moz-opacity: 1!important; /* opacity [0-1] */
+    -webkit-opacity: 1!important;
+    z-index: 100;
+}
