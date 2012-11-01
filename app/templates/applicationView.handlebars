@@ -1,27 +1,55 @@
 <div class="row">
-            <div class="span6">
-            <div class="hero-unit">
-                <h3>Enter a trip request</h3>
-                <div class="control-group">
-                    <label class="control-label" for="from">From</label>
+    <div class="span6">
+        <div class="hero-unit">
+            <h3>Enter a trip request</h3>
+            <div class="control-group">
+                <label class="control-label" for="from">From</label>
+                <div class="controls">
+                    <input type="text" id="from" placeholder="Enter your start location">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="to">To</label>
+                <div class="controls">
+                    <input type="text" id="to" placeholder="Enter your end location">
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group span2">
+                    <label class="control-label" for="departure_start">Departure start</label>
                     <div class="controls">
-                        <input type="text" id="from" placeholder="Enter your start location">
+                        <input class="input-small" type="text" id="departure_start" placeholder="Dep. start">
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="to">To</label>
+                <div class="control-group span2">
+                    <label class="control-label" for="departure_end">Departure end</label>
                     <div class="controls">
-                        <input type="text" id="to" placeholder="Enter your end location">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" class="btn btn-primary" id="trip-request-submit">Submit</button>
+                        <input class="input-small" type="text" id="departure_end" placeholder="Dep. end">
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="control-group span2">
+                    <label class="control-label" for="arrival_start">Arrival start</label>
+                    <div class="controls">
+                        <input class="input-small" type="text" id="arrival_start" placeholder="Arrival start">
+                    </div>
+                </div>
+                <div class="control-group span2">
+                    <label class="control-label" for="arrival_end">Arrival end</label>
+                    <div class="controls">
+                        <input class="input-small" type="text" id="arrival_end" placeholder="Arrival end">
+                    </div>
+                </div>
             </div>
-            <div class="span6">
-                <div id="trip-request-view" class="hero-unit"></div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn btn-primary" id="trip-request-submit">Submit</button>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="span6">
+        <div id="trip-request-view" class="hero-unit"></div>
+    </div>
+</div>
