@@ -3,15 +3,16 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
     model: shuttledriveWeb.Models.tripMatchesModel
     request = ''
 
+    initialize: ->
+        console.log 'init MatchView'
+
     setModel: (data) ->
         @model = data
         _.bindAll @, 'render'
         @model.bind 'change', @render
-
         @render()
 
     render:  ->
-
         console.log @model 
         context = {
             "request" :@model.attributes.tripRequest,

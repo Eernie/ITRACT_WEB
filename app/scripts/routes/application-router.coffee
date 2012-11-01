@@ -4,6 +4,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "" : "indexRoute"
 
     matchesRoute: ->
+        console.log 'matchesRoute'
         match = new shuttledriveWeb.Models.TripMatchesModel({id: 1})
         match.fetch
             success: (data) ->
@@ -15,4 +16,5 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                 console.log 'fail'
 
     indexRoute: ->
+        console.log 'indexRoute'
         applicationView = new shuttledriveWeb.Views.ApplicationView()

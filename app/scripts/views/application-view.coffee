@@ -5,6 +5,7 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         "click #trip-request-submit": "createOnSubmit"
 
     initialize: ->
+        console.log 'init ApplicationView'
         _.bindAll(@)
         @render()
 

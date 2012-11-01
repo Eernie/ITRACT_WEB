@@ -1,4 +1,7 @@
 class shuttledriveWeb.Models.TripMatchesModel extends Backbone.Model
+
+    initialize: ->
+        console.log 'init TripMatchesModel'
     url: ->
         'http://localhost:5000/match/'+@id
 

@@ -1,4 +1,5 @@
 <div class="triprequest">
+    <h3>Trip request</h3>
     <p>User: {{user}}</p>
     <p>Origin Address: {{originAddress}}</p>
     <p>Origin Latitude: {{originLat}}</p>
@@ -6,4 +7,5 @@
     <p>Destination Address: {{destinationAddress}}</p>
     <p>destinationLat: {{destinationLat}}</p>
     <p>destinationLong: {{destinationLong}}</p>
+        <img src="http://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C{{originLat}}, {{originLong}}&markers=color:green%7Clabel:G%7C{{destinationLat}}, {{destinationLong}}&sensor=false"></img>
 </div>
