@@ -11,7 +11,7 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
     render: ->
         context = {}
         $(@el).html(Handlebars.templates['applicationView'](context))
-        $('.timepicker').timepicker({showMeridian: false, showSeconds: false})
+        $('.timepicker-default').timepicker({showMeridian: false, showSeconds: false})
 
     # TODO: remove from view and into helper or model and unit test
     createDate: (timeString) ->
@@ -25,11 +25,16 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
     createOnSubmit: ->
         from = $('#from').val()
         to = $('#to').val()
-        departureStart = @createDate $('#departure-start').val()
-        departureEnd = @createDate $('#departure-end').val()
-        arrivalStart = @createDate $('#arrival-start').val()
-        arrivalEnd = @createDate $('#arrival-end').val()
-        tripRequest = new shuttledriveWeb.Models.TripRequestModel({ startTimeMin: departureStart, startTimeMax: departureEnd, endTimeMin: arrivalStart, endTimeMax: arrivalEnd })
+        ###
+        dep_start = @createDate $('#departure_start').val()
+        dep_end = @createDate $('#departure_end').val()
+        arr_start = @createDate $('#arrival_start').val()
+        arr_end = @createDate $('#arrival_end').val()
+        ###
+        tripRequest = new shuttledriveWeb.Models.TripRequestModel()
+        ###
+        {start_time_min: dep_start, start_time_max: dep_end, end_time_min: arr_start, end_time_max: arr_end})
+        ###
         tripRequest.fetchCoordinates from, to
         tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
 
