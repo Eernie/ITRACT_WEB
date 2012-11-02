@@ -11,7 +11,7 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
     render: ->
         context = {}
         $(@el).html(Handlebars.templates['applicationView'](context))
-        $("#departure-start, #departure-end, #arrival-start, #arrival-end").timepicker({amPmText: ['', '']})
+        $('.timepicker-default').timepicker({showMeridian: false, showSeconds: false, defaultTime: 'current'});
 
     # TODO: remove from view and into helper or model and unit test
     createDate: (timeString) ->
@@ -52,6 +52,3 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
                 console.log error
         )
 
-
-
-        

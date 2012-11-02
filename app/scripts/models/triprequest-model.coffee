@@ -17,8 +17,8 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
 
     urlRoot: 'http://localhost:5000/trip_request'
 
-    initialize: ->
-        @bind('change', @save) # TODO: maybe refactor to only send a request when all data has been fetched from Google
+    # initialize: ->
+    #     @bind('change', @save) # TODO: maybe refactor to only send a request when all data has been fetched from Google
 
     fetchCoordinates: (origin, destination) ->
         @set 'originAddress': origin

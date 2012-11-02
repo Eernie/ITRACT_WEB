@@ -14,33 +14,24 @@
                     <input type="text" id="to" placeholder="Enter your end location">
                 </div>
             </div>
-            <div class="row">
-                <div class="control-group span2">
-                    <label class="control-label" for="departure-start">Departure start</label>
-                    <div class="controls">
-                        <input class="input-small" type="text" id="departure-start" placeholder="Dep. start">
-                    </div>
+            <div class="control-group">
+                <div class="input-append bootstrap-timepicker-component">
+                    <input type="text" class="timepicker-default input-small">
+                    <span class="add-on">
+                        <i class="icon-time"></i>
+                    </span>
                 </div>
-                <div class="control-group span2">
-                    <label class="control-label" for="departure-end">Departure end</label>
-                    <div class="controls">
-                        <input class="input-small" type="text" id="departure-end" placeholder="Dep. end">
-                    </div>
+                <div class="form-inline">
+                    <label class="radio">
+                    <input type="radio" name="optionsRadios" id="departure-time" value="departure-time" checked>
+                    Departure
+                </label>
+                <label class="radio">
+                    <input type="radio" name="optionsRadios" id="arrival-time" value="arrival-time">
+                    Arrival
+                </label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="control-group span2">
-                    <label class="control-label" for="arrival-start">Arrival start</label>
-                    <div class="controls">
-                        <input class="input-small" type="text" id="arrival-start" placeholder="Arrival start">
-                    </div>
-                </div>
-                <div class="control-group span2">
-                    <label class="control-label" for="arrival-end">Arrival end</label>
-                    <div class="controls">
-                        <input class="input-small" type="text" id="arrival-end" placeholder="Arrival end">
-                    </div>
-                </div>
+                
             </div>
             <div class="control-group">
                 <div class="controls">
