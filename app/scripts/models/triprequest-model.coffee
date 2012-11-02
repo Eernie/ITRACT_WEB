@@ -12,6 +12,8 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         endTimeMin: 0
         endTimeMax: 0
         numberOfSeats: 0
+        request_end_time_max: 0
+        request_id: 0
 
     urlRoot: 'http://localhost:5000/trip_request'
 

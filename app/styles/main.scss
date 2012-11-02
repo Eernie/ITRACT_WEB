@@ -13,10 +13,3 @@ body {
     -moz-opacity: 0.9; /* opacity [0-1] */
     -webkit-opacity: 0.9; /* opacity [0-1] */
 }
-
-.opaque {
-    opacity: 1!important; /* opacity [0-1] */
-    -moz-opacity: 1!important; /* opacity [0-1] */
-    -webkit-opacity: 1!important;
-    z-index: 100;
-}

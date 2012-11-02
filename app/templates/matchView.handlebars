@@ -1,43 +1,21 @@
-<div class="hero-unit matchview">
-
-    <h1> Availible Matches </h1>
-
-    Your Request {{request.request_origin}} to {{request.request_destination}}
-
-    <h3> Matches </h3>
-    <div class="matches">
-        <table class="match">
-            <thead>
-                <tr> 
-                    <td class="center-border">
-                        From
-                    </td><td class="center-border">
-                        To
-                    </td><td>
-                        # Seats
-                    </td><td>
-                        Submit
-                    </td>
-
-                </tr>
-            </thead>
-        {{#each matches}}
-            <tr>
-                <td class="center-border">
-                    {{offer_origin}}
-                    <br>
-                    {{offer_start_time_min}} - {{offer_start_time_max}}
-                </td><td class="center-border">
-                    {{offer_destination}}
-                    <br>
-                    {{offer_end_time_min}} - {{offer_end_time_min}}
-                </td><td class="center-border">
-                    {{offer_numberOfSeats}}
-                </td><td>
-                    <button class="btn btn-primary">Join</button>
-                </td>
-            </tr>
-        {{/each}}
-        </table>
+<div class="well">
+    <div clas="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+            {{#each matches}}
+            <li>
+                <a href="#match{{match_id}}" data-toggle="tab">
+                    From {{offer_origin}}
+                    To {{offer_destination}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="tab-content">
+            
+            <div class="tab-pane active" id="match1">
+                blalalalalalablalalalallballala
+                niet zeker wat hier komt te staan!
+            </div>
+        </div>
     </div>
 </div>
