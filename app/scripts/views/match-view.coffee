@@ -6,9 +6,10 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
 
     render:  ->
         context = {
-            "request" :@model.get('tripRequest'),
-            "matches" :@model.get('tripMatches')
+            'request': @model.get('tripRequest'),
+            'matches': @model.get('tripMatches')
         }
+
         console.log context
         $(@el).html(Handlebars.templates['matchView'](context))
 
