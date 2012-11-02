@@ -8,13 +8,15 @@
     <div class="matches">
         <table class="match">
             <thead>
-                <tr>
+                <tr> 
                     <td class="center-border">
                         From
                     </td><td class="center-border">
                         To
                     </td><td>
                         # Seats
+                    </td><td>
+                        Submit
                     </td>
 
                 </tr>
@@ -29,8 +31,10 @@
                     {{offer_destination}}
                     <br>
                     {{offer_end_time_min}} - {{offer_end_time_min}}
-                </td><td>
+                </td><td class="center-border">
                     {{offer_numberOfSeats}}
+                </td><td>
+                    <button class="btn btn-primary">Join</button>
                 </td>
             </tr>
         {{/each}}
