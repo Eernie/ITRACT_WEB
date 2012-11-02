@@ -14,3 +14,7 @@ test/spec/*.js
 
 node_modules/*
 
+
+app/scripts/views/application-view.coffee
+
+app/scripts/templates/template.js
