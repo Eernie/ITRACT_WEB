@@ -79,17 +79,10 @@
                     });
                 }
             }
-<<<<<<< HEAD
-
-
-            this.$widget = $(this.getTemplate()).appendTo('body');
-
-=======
             
 
             this.$widget = $(this.getTemplate()).appendTo('body');
             
->>>>>>> timepicker
             this.$widget.on('click', $.proxy(this.widgetClick, this));
 
             if (this.showInputs) {
@@ -98,11 +91,7 @@
                     keypress: $.proxy(this.widgetKeypress, this),
                     change: $.proxy(this.updateFromWidgetInputs, this)
                 });
-<<<<<<< HEAD
-            }
-=======
             } 
->>>>>>> timepicker
 
             this.setDefaultTime(this.defaultTime);
         }
@@ -150,11 +139,7 @@
 
         , hideWidget: function(){
             this.$element.trigger('hide');
-<<<<<<< HEAD
-
-=======
             
->>>>>>> timepicker
             if (this.template === 'modal') {
                 this.$widget.modal('hide');
             } else {
@@ -181,19 +166,11 @@
             switch (e.keyCode) {
                 case 9: //tab
                     if (this.showMeridian) {
-<<<<<<< HEAD
-                        if (input == 'meridian') {
-                            this.hideWidget();
-                        }
-                    } else {
-                        if (this.showSeconds) {
-=======
                         if (input == 'meridian') { 
                             this.hideWidget();
                         }
                     } else {
                         if (this.showSeconds) { 
->>>>>>> timepicker
                             if (input == 'second') {
                                 this.hideWidget();
                             }
@@ -257,11 +234,7 @@
                             this.highlightNextUnit();
                         }
                     } else {
-<<<<<<< HEAD
-                        if (this.showSeconds) {
-=======
                         if (this.showSeconds) { 
->>>>>>> timepicker
                             if (this.highlightedUnit != 'second') {
                                 e.preventDefault();
                                 this.highlightNextUnit();
@@ -320,11 +293,7 @@
                     this.updateElement();
                 break;
             }
-<<<<<<< HEAD
-
-=======
             
->>>>>>> timepicker
             if (e.keyCode !== 0 && e.keyCode !== 8 && e.keyCode !== 9 && e.keyCode !== 46) {
                 e.preventDefault();
             }
@@ -345,11 +314,7 @@
 
             if (isNaN(this.hour)) {
                 this.hour = 0;
-<<<<<<< HEAD
-            }
-=======
             } 
->>>>>>> timepicker
             if (isNaN(this.minute)) {
                 this.minute = 0;
             }
@@ -365,11 +330,7 @@
                     this.meridian = 'AM';
                 } else if (this.meridian == 'pm' || this.meridian == 'p') {
                     this.meridian = 'PM';
-<<<<<<< HEAD
-                }
-=======
                 } 
->>>>>>> timepicker
 
                 if (this.meridian != 'AM' && this.meridian != 'PM') {
                     this.meridian = 'AM';
@@ -398,12 +359,7 @@
                 }
             }
 
-<<<<<<< HEAD
-            if ( this.$element.val() != '' )
-                this.updateElement();
-=======
             this.updateElement();
->>>>>>> timepicker
             this.updateWidget();
         }
 
@@ -448,13 +404,7 @@
                 } else {
                     this.setValues(defaultTime);
                 }
-<<<<<<< HEAD
-                if ( this.$element.val() != '' )
-                    this.updateElement();
-                this.updateWidget();
-=======
                 this.update();
->>>>>>> timepicker
             } else {
                 this.hour = 0;
                 this.minute = 0;
@@ -541,15 +491,6 @@
         }
 
         , updateFromWidgetInputs: function () {
-<<<<<<< HEAD
-            var time = $('input.bootstrap-timepicker-hour', this.$widget).val() + ':' +
-                       $('input.bootstrap-timepicker-minute', this.$widget).val() +
-                       (this.showSeconds ?
-                           ':' + $('input.bootstrap-timepicker-second', this.$widget).val()
-                        : '') +
-                       (this.showMeridian ?
-                           ' ' + $('input.bootstrap-timepicker-meridian', this.$widget).val()
-=======
             var time = $('input.bootstrap-timepicker-hour', this.$widget).val() + ':' + 
                        $('input.bootstrap-timepicker-minute', this.$widget).val() +
                        (this.showSeconds ? 
@@ -557,7 +498,6 @@
                         : '') +
                        (this.showMeridian ? 
                            ' ' + $('input.bootstrap-timepicker-meridian', this.$widget).val() 
->>>>>>> timepicker
                         : '');
 
             this.setValues(time);
@@ -643,43 +583,25 @@
 
         , highlightHour: function() {
             this.highlightedUnit = 'hour';
-<<<<<<< HEAD
-            this.$element.get(0).setSelectionRange(0,2);
-=======
             this.$element.get(0).setSelectionRange(0,2); 
->>>>>>> timepicker
         }
 
         , highlightMinute: function() {
             this.highlightedUnit = 'minute';
-<<<<<<< HEAD
-            this.$element.get(0).setSelectionRange(3,5);
-=======
             this.$element.get(0).setSelectionRange(3,5); 
->>>>>>> timepicker
         }
 
         , highlightSecond: function() {
             this.highlightedUnit = 'second';
-<<<<<<< HEAD
-            this.$element.get(0).setSelectionRange(6,8);
-=======
             this.$element.get(0).setSelectionRange(6,8); 
->>>>>>> timepicker
         }
 
         , highlightMeridian: function() {
             this.highlightedUnit = 'meridian';
             if (this.showSeconds) {
-<<<<<<< HEAD
-                this.$element.get(0).setSelectionRange(9,11);
-            } else {
-                this.$element.get(0).setSelectionRange(6,8);
-=======
                 this.$element.get(0).setSelectionRange(9,11); 
             } else {
                 this.$element.get(0).setSelectionRange(6,8); 
->>>>>>> timepicker
             }
         }
 
@@ -701,11 +623,7 @@
             if (this.showMeridian) {
                 if (this.hour === 1) {
                     return this.hour = 12;
-<<<<<<< HEAD
-                }
-=======
                 } 
->>>>>>> timepicker
                 else if (this.hour === 12) {
                     this.toggleMeridian();
                 }
@@ -782,19 +700,11 @@
                                            '<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>'+
                                            '<td class="separator">&nbsp;</td>'+
                                            '<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>'+
-<<<<<<< HEAD
-                                           (this.showSeconds ?
-                                               '<td class="separator">&nbsp;</td>'+
-                                               '<td><a href="#" data-action="incrementSecond"><i class="icon-chevron-up"></i></a></td>'
-                                           : '') +
-                                           (this.showMeridian ?
-=======
                                            (this.showSeconds ? 
                                                '<td class="separator">&nbsp;</td>'+
                                                '<td><a href="#" data-action="incrementSecond"><i class="icon-chevron-up"></i></a></td>'
                                            : '') +
                                            (this.showMeridian ? 
->>>>>>> timepicker
                                                '<td class="separator">&nbsp;</td>'+
                                                '<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>'
                                            : '') +
@@ -803,19 +713,11 @@
                                            '<td>'+ hourTemplate +'</td> '+
                                            '<td class="separator">:</td>'+
                                            '<td>'+ minuteTemplate +'</td> '+
-<<<<<<< HEAD
-                                           (this.showSeconds ?
-                                                '<td class="separator">:</td>'+
-                                                '<td>'+ secondTemplate +'</td>'
-                                           : '') +
-                                           (this.showMeridian ?
-=======
                                            (this.showSeconds ? 
                                                 '<td class="separator">:</td>'+
                                                 '<td>'+ secondTemplate +'</td>'
                                            : '') +
                                            (this.showMeridian ? 
->>>>>>> timepicker
                                                 '<td class="separator">&nbsp;</td>'+
                                                 '<td>'+ meridianTemplate +'</td>'
                                            : '') +
@@ -824,19 +726,11 @@
                                            '<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>'+
                                            '<td class="separator"></td>'+
                                            '<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>'+
-<<<<<<< HEAD
-                                           (this.showSeconds ?
-                                                '<td class="separator">&nbsp;</td>'+
-                                                '<td><a href="#" data-action="decrementSecond"><i class="icon-chevron-down"></i></a></td>'
-                                           : '') +
-                                           (this.showMeridian ?
-=======
                                            (this.showSeconds ? 
                                                 '<td class="separator">&nbsp;</td>'+
                                                 '<td><a href="#" data-action="decrementSecond"><i class="icon-chevron-down"></i></a></td>' 
                                            : '') +
                                            (this.showMeridian ? 
->>>>>>> timepicker
                                                 '<td class="separator">&nbsp;</td>'+
                                                 '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>'
                                            : '') +
@@ -858,22 +752,14 @@
                                        '<a href="#" class="btn btn-primary" data-dismiss="modal">Ok</a>'+
                                    '</div>'+
                                '</div>';
-<<<<<<< HEAD
-
-=======
                     
->>>>>>> timepicker
                 break;
                 case 'dropdown':
                     template = '<div class="bootstrap-timepicker dropdown-menu">'+
                                     templateContent +
                                '</div>';
                 break;
-<<<<<<< HEAD
-
-=======
                 
->>>>>>> timepicker
             }
             return template;
         }
