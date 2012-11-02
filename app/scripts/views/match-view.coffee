@@ -1,6 +1,8 @@
 class shuttledriveWeb.Views.MatchView extends Backbone.View
     model: shuttledriveWeb.Models.tripMatchesModel
 
+    events:
+        "click .apply-join": "createOnJoin"
 
     render:  ->
         context = {
@@ -10,4 +12,5 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
         console.log context
         $(@el).html(Handlebars.templates['matchView'](context))
 
-
+    createOnJoin: (element)->
+        console.log $(element.currentTarget).attr("id")
