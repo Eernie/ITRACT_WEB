@@ -4,7 +4,7 @@ class shuttledriveWeb.Models.TripMatchesModel extends Backbone.Model
         destinationAddress: ""
 
     url: ->
-        'http://localhost:5000/match/'+@id
+        shuttledriveWeb.rootPath + '/match/' + @id
 
 
 
