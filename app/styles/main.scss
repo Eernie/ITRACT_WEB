@@ -8,8 +8,12 @@ body {
 	background-size: cover;
 }
 
-.hero-unit {
-    opacity: 0.9; /* opacity [0-1] */
-    -moz-opacity: 0.9; /* opacity [0-1] */
-    -webkit-opacity: 0.9; /* opacity [0-1] */
+.hero-unit, .well {
+    opacity: 0.96; /* opacity [0-1] */
+    -moz-opacity: 0.96; /* opacity [0-1] */
+    -webkit-opacity: 0.96; /* opacity [0-1] */
+}
+
+.radio {
+    margin-right: 10px;
 }

@@ -5,13 +5,13 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         "click #trip-request-submit": "createOnSubmit"
 
     initialize: ->
-        _.bindAll(@)
+        _.bindAll @
         @render()
 
     render: ->
         context = {}
         $(@el).html(Handlebars.templates['applicationView'](context))
-        $("#departure-start, #departure-end, #arrival-start, #arrival-end").timepicker({amPmText: ['', '']})
+        $('.timepicker-default').timepicker({showMeridian: false, showSeconds: false, minuteStep: 5})
 
     # TODO: remove from view and into helper or model and unit test
     createDate: (timeString) ->
@@ -25,11 +25,7 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
     createOnSubmit: ->
         from = $('#from').val()
         to = $('#to').val()
-        departureStart = @createDate $('#departure-start').val()
-        departureEnd = @createDate $('#departure-end').val()
-        arrivalStart = @createDate $('#arrival-start').val()
-        arrivalEnd = @createDate $('#arrival-end').val()
-        tripRequest = new shuttledriveWeb.Models.TripRequestModel({ startTimeMin: departureStart, startTimeMax: departureEnd, endTimeMin: arrivalStart, endTimeMax: arrivalEnd })
+        tripRequest = new shuttledriveWeb.Models.TripRequestModel()
         tripRequest.fetchCoordinates from, to
         tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
 
@@ -51,7 +47,3 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
                 console.log "Failed"
                 console.log error
         )
-
-
-
-        
