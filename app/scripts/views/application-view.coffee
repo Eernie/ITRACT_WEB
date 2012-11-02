@@ -35,7 +35,7 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
             tripRequest.toJSON()
         ,
             success: ->
-                match = new shuttledriveWeb.Models.TripMatchesModel({id: tripRequest.get('request_id')})
+                match = new shuttledriveWeb.Models.TripMatchesModel({id: tripRequest.get('requestId')})
                 match.fetch
                     success: (data) ->
                         view = new shuttledriveWeb.Views.MatchView({model: data})
