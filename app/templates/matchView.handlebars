@@ -1,11 +1,39 @@
-<div class="hero-unit">
-	<h1> Availible Matches </h1>
+<div class="hero-unit matchview">
 
-	Your Request {{request.request_origin}} to {{request.request_destination}}
+    <h1> Availible Matches </h1>
 
-	<h3> Matches </h3>
-	{{#each matches}}
-	From {{offer_origin}}  -- {{offer_destination}}
-	<br />
-	{{/each}}
+    Your Request {{request.request_origin}} to {{request.request_destination}}
+
+    <h3> Matches </h3>
+    <div class="matches">
+        <table class="match">
+            <thead>
+                <tr>
+                    <td class="center-border">
+                        From
+                    </td><td class="center-border">
+                        To
+                    </td><td>
+                        # Seats
+                    </td>
+
+                </tr>
+            </thead>
+        {{#each matches}}
+            <tr>
+                <td class="center-border">
+                    {{offer_origin}}
+                    <br>
+                    {{offer_start_time_min}} - {{offer_start_time_max}}
+                </td><td class="center-border">
+                    {{offer_destination}}
+                    <br>
+                    {{offer_end_time_min}} - {{offer_end_time_min}}
+                </td><td>
+                    {{offer_numberOfSeats}}
+                </td>
+            </tr>
+        {{/each}}
+        </table>
+    </div>
 </div>
