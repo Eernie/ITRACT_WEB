@@ -1,29 +1,39 @@
 class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     defaults:
-        user: 1
-        originLat: 0
-        originLong: 0
-        destinationLat: 0
-        destinationLong: 0
-        startTimeMin: 0
-        startTimeMax: 0
-        endTimeMin: 0
-        endTimeMax: 0
-        numberOfSeats: 4
-        request_end_time_max: 0
-        request_id: 0
+        requestId: ''
+        requestUser: ''
+        requestOriginAddress: ''
+        requestOriginLong: ''
+        requestOriginLat: ''
+        requestOriginWindow: ''
+        requestDestinationAddress: ''
+        requestDestinationLong: ''
+        requestDestinationLat: ''
+        requestDestinationWindow: ''
+        requestStartTimeMin: ''
+        requestStartTimeMax: ''
+        requestEndTimeMin: ''
+        requestEndTimeMax: ''
+        requestNumberOfSeats: ''
+        requestState: ''
 
     urlRoot: ->
         shuttledriveWeb.rootPath + '/trip_request'
 
-    # initialize: ->
-    #     @bind('change', @save) # TODO: maybe refactor to only send a request when all data has been fetched from Google
-
-    fetchCoordinates: (origin, destination) ->
-        @set 'originAddress': origin
-        @set 'destinationAddress': destination
-        @getLatLong @, origin, @originCallback
-        @getLatLong @, destination, @destinationCallback
+    saveWithOriginAndDestination: (origin, destination, callback) ->
+        @set 'requestOriginAddress': origin
+        @set 'requestDestinationAddress': destination
+        @getLatLong @, origin, (caller, result) ->
+            caller.set 'requestOriginLat': result.Ya
+            caller.set 'requestOriginLong':  result.Za
+        @getLatLong @, destination, (caller, result) ->
+            caller.set 'requestDestinationLat': result.Ya
+            caller.set 'requestDestinationLong': result.Za
+            caller.save({}, 
+                success: ->
+                    callback(caller.get('requestId'))
+                error: ->
+                    console.log 'error')
 
     getLatLong: (caller, address, callback) ->
         geocoder = new google.maps.Geocoder()
@@ -32,11 +42,3 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 result = results[0].geometry.location
                 callback(caller, result)
             # else throw error TODO: add throw statement
-
-    originCallback: (caller, result) ->
-        caller.set 'originLat': result.Ya
-        caller.set 'originLong':  result.Za
-
-    destinationCallback: (caller, result) ->
-        caller.set 'destinationLat': result.Ya
-        caller.set 'destinationLong': result.Za
