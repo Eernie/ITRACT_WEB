@@ -5,7 +5,7 @@ window.shuttledriveWeb =
     Routers: {}
     rootPath: 'http://localhost:5000'
     init: ->
-        new shuttledriveWeb.Routers.ApplicationRouter()
+        shuttledriveWeb.app = new shuttledriveWeb.Routers.ApplicationRouter()
         Backbone.history.start()
     
 $(document).ready ->

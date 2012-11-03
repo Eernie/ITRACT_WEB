@@ -6,21 +6,22 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
 
     render:  ->
         context = {
-            "request" :@model.get('tripRequest'),
-            "matches" :@model.get('tripMatches')
+            'request': @model.get('tripRequest'),
+            'matches': @model.get('tripMatches')
         }
+
         console.log context
         $(@el).html(Handlebars.templates['matchView'](context))
 
     createOnJoin: (element)->
         id = $(element.currentTarget).attr("id")
         match = new shuttledriveWeb.Models.TripMatchModel({id: id})
-        match.fetch
+        match.fetch # why are we fetching the match here
             success:(data) ->
-                data.set 'matchState': 'POTENTIAL'
+                data.set 'matchState': 'POTENTIAL' # and then updating it here
                 data.set 'confirm': true
                 data.save(
-                    data.toJSON
+                    data.toJSON # only to save it again here, while we already fetched the model in the router
                     ,
                     success: ->
                         console.log "we successed!"
