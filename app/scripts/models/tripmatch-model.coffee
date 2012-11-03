@@ -1,11 +1,9 @@
-class shuttledriveWeb.Models.TripMatchesModel extends Backbone.Model
+class shuttledriveWeb.Models.TripMatchModel extends Backbone.Model
     defaults:
         originAddress: ""
         destinationAddress: ""
+        matchState: ""
+        confirm: "" 
 
     url: ->
-        shuttledriveWeb.rootPath + '/match/' + @id
-
-
-
-
+        shuttledriveWeb.rootPath + '/trip_match/' + @id

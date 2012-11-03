@@ -26,24 +26,6 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         from = $('#from').val()
         to = $('#to').val()
         tripRequest = new shuttledriveWeb.Models.TripRequestModel()
-        tripRequest.fetchCoordinates from, to
-        tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
-
-        $('#trip-request-view').html(tripRequestView.render())
-
-        tripRequest.save(
-            tripRequest.toJSON()
-        ,
-            success: ->
-                match = new shuttledriveWeb.Models.TripMatchesModel({id: tripRequest.get('requestId')})
-                match.fetch
-                    success: (data) ->
-                        view = new shuttledriveWeb.Views.MatchView({model: data})
-                        $('#trip-matches').html(view.render())
-                    error: (data,error) ->
-                        console.log error
-                        console.log 'fail'
-            fail: (error) ->
-                console.log "Failed"
-                console.log error
+        tripRequest.saveWithOriginAndDestination(from, to, (id) ->
+            shuttledriveWeb.app.navigate 'triprequest/' + id, {trigger: true}
         )

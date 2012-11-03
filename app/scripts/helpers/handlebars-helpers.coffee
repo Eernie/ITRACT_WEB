@@ -61,3 +61,7 @@ Handlebars.registerHelper "durationFormatISO", (context) ->
   mins = (if (hours) then Math.floor(duration % 3600 / 60) else Math.floor(duration / 60))
   secs = Math.floor(duration % 60)
   "PT" + hours + "H" + mins + "M" + secs + "S"
+
+Handlebars.registerHelper "capitalize", (str) ->
+    str = (if not str? then "" else String(str))
+    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
