@@ -1,5 +1,6 @@
-class shuttledriveWeb.Views.ApplicationView extends Backbone.View
+class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
     el: $ '#content'
+
 
     events:
         "click #trip-request-submit": "createOnSubmit"
@@ -10,7 +11,8 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
 
     render: ->
         context = {}
-        $(@el).html(Handlebars.templates['applicationView'](context))
+        Backbone.Validation.bind this
+        $(@el).html(Handlebars.templates['triprequest-form-view'](context))
         $('.timepicker-default').timepicker({showMeridian: false, showSeconds: false, minuteStep: 5})
 
     # TODO: remove from view and into helper or model and unit test
@@ -25,7 +27,7 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
     createOnSubmit: ->
         from = $('#from').val()
         to = $('#to').val()
-        tripRequest = new shuttledriveWeb.Models.TripRequestModel()
-        tripRequest.saveWithOriginAndDestination(from, to, (id) ->
+        @model.saveWithOriginAndDestination(from, to, (id) ->
             shuttledriveWeb.app.navigate 'triprequest/' + id, {trigger: true}
         )
+        console.log(@model.isValid())
