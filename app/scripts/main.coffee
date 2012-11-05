@@ -1,14 +1,12 @@
-console.log 'main'
 window.shuttledriveWeb =
     Models: {}
     Collections: {}
     Views: {}
     Routers: {}
+    rootPath: 'http://localhost:5000'
     init: ->
-        console.log 'init main'
         new shuttledriveWeb.Routers.ApplicationRouter()
         Backbone.history.start()
     
 $(document).ready ->
     shuttledriveWeb.init()
-    console.log shuttledriveWeb

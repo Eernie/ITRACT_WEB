@@ -5,14 +5,13 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         "click #trip-request-submit": "createOnSubmit"
 
     initialize: ->
-        console.log 'init ApplicationView'
-        _.bindAll(@)
+        _.bindAll @
         @render()
 
     render: ->
         context = {}
         $(@el).html(Handlebars.templates['applicationView'](context))
-        $("#departure-start, #departure-end, #arrival-start, #arrival-end").timepicker({amPmText: ['', '']})
+        $('.timepicker-default').timepicker({showMeridian: false, showSeconds: false, minuteStep: 5})
 
     # TODO: remove from view and into helper or model and unit test
     createDate: (timeString) ->
@@ -24,15 +23,27 @@ class shuttledriveWeb.Views.ApplicationView extends Backbone.View
         +date # convert to unix timestamp
 
     createOnSubmit: ->
-        console.log "createOnSubmit"
         from = $('#from').val()
         to = $('#to').val()
-        departureStart = @createDate $('#departure-start').val()
-        departureEnd = @createDate $('#departure-end').val()
-        arrivalStart = @createDate $('#arrival-start').val()
-        arrivalEnd = @createDate $('#arrival-end').val()
-        tripRequest = new shuttledriveWeb.Models.TripRequestModel({ startTimeMin: departureStart, startTimeMax: departureEnd, endTimeMin: arrivalStart, endTimeMax: arrivalEnd })
+        tripRequest = new shuttledriveWeb.Models.TripRequestModel()
         tripRequest.fetchCoordinates from, to
         tripRequestView = new shuttledriveWeb.Views.TripRequestView({model: tripRequest})
 
         $('#trip-request-view').html(tripRequestView.render())
+
+        tripRequest.save(
+            tripRequest.toJSON()
+        ,
+            success: ->
+                match = new shuttledriveWeb.Models.TripMatchesModel({id: tripRequest.get('requestId')})
+                match.fetch
+                    success: (data) ->
+                        view = new shuttledriveWeb.Views.MatchView({model: data})
+                        $('#trip-matches').html(view.render())
+                    error: (data,error) ->
+                        console.log error
+                        console.log 'fail'
+            fail: (error) ->
+                console.log "Failed"
+                console.log error
+        )
