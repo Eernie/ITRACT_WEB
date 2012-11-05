@@ -1,46 +1,52 @@
 <div class="well">
     <h3>Matching offerState</h3>
-    <p>
-        <small>Request date: {{dateFormat request.requestStartTimeMin}}}</small>
-    </p>
     <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-tabs">
-          {{#each matches}}  
-            <li><a href="#match{{matchId}}" data-toggle="tab">
+        {{#each matches}}  
+            <li>
+                <a href="#match{{matchId}}" data-toggle="tab">
 
-              From {{offerOriginAddress}} 
-              {{#if offerStartTimeMin}}
-                  <span class="badge badge-info">{{dateFormatTimeOnly offerStartTimeMin}}</span>
-              {{/if}}
-              <br>
-              To {{offerDestinationAddress}} 
-              {{#if offerEndTimeMin}}
-                <span class="badge badge-info">{{dateFormatTimeOnly offerEndTimeMin}}</span>
-              {{/if}}
-               <span class="disclosure pull-right"></span>
-              </a>
+                    From {{offerOriginAddress}} 
+                    {{#if offerStartTimeMin}}
+                        <span class="badge badge-info">{{dateFormatTimeOnly offerStartTimeMin}}</span>
+                    {{/if}}
+                    <br>
+                    To {{offerDestinationAddress}} 
+                    {{#if offerEndTimeMin}}
+                        <span class="badge badge-info">{{dateFormatTimeOnly offerEndTimeMin}}</span>
+                    {{/if}}
+                    <span class="disclosure pull-right"></span>
+                </a>
             </li>
-          {{/each}}
+        {{/each}}
         </ul>
         <div class="tab-content">
-          {{#each matches}}
+        {{#each matches}}
             <div class="tab-pane fade" id="match{{matchId}}">
-              <p>
-                <table class="table table-striped table-hover table-bordered">
-                  <tr>
-                    <td>User</td><td>{{offerUser}}</td>
-                  </tr>
-                  <tr>
-                    <td>User</td><td>{{offerUser}}</td>
-                  </tr>
-                  <tr>
-                    <td>Status</td><td>{{capitalize offerState}}</td>
-                  </tr>
-                </table>
-                <button class="btn btn-primary pull-right apply-join" id="{{matchId}}">Join</button>
-              </p>
+                <p>
+                    <table class="table table-striped table-hover table-bordered">
+                        <tr>
+                            <td>User</td><td>{{offerUser}}</td>
+                        </tr>
+                        <tr>
+                            <td>User</td><td>{{offerUser}}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td><td>{{capitalize offerState}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                From: {{offerOriginAddress}} <br>
+                                To: {{offerDestinationAddress}}
+                            </td><td>
+                                <img src="http://maps.googleapis.com/maps/api/staticmap?size=300x150&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{offerOriginLat}}, {{offerOriginLong}}&markers=color:Red%7Clabel:B%7C{{offerDestinationLat}}, {{offerDestinationLong}}&sensor=false"></img>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary pull-right apply-join" id="{{matchId}}">Join</button>
+                </p>
             </div>
-          {{/each}}
+        {{/each}}
         </div>
-</div>
+    </div>
 </div>
