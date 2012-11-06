@@ -1,6 +1,4 @@
 class shuttledriveWeb.Views.MatchView extends Backbone.View
-    model: shuttledriveWeb.Models.tripMatchesModel
-
     events:
         "click .apply-join": "createOnJoin"
 
