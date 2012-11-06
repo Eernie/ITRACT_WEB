@@ -7,8 +7,8 @@ class shuttledriveWeb.Views.MenuView extends Backbone.View
     render: ->
         
         notification = [
-            {name:'item',content:'bladieblad'}
-            {name:'item2',content:'bladieblad2'}
+            {title:'item',message:'bladieblad',id:'not1'}
+            {title:'item2',message:'bladieblad2',id:'not2'}
         ]
 
         $(@el).html(Handlebars.templates['menuView']({
