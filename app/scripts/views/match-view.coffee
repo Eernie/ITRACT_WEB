@@ -22,9 +22,12 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
                     data.toJSON # only to save it again here, while we already fetched the model in the router
                     ,
                     success: ->
-                        console.log "we successed!"
+                        $(element.currentTarget).attr("disabled","true")
+                        $(element.currentTarget).html('&#x2713; Joined')
+                        $(element.currentTarget).toggleClass('btn-primary btn-success')
+
                     error: ->
-                        console.log "we fail! Yellow submarine"
+                        console.log ' error'
                 )
 
             error:(data, error) ->

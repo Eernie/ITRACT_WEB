@@ -17,7 +17,16 @@ class shuttledriveWeb.Views.TripOfferView extends Backbone.View
     createOnSubmit: ->
         from = $('#from').val()
         to = $('#to').val()
+        timeArrival = $('#offer-arrival-time').val()
+        timeDeparture = $('#offer-departure-time').val()
+
+        # departureTimeMin = shuttledriveWeb.Helpers.TimeHelper.getDate(timeDeparture)
+        # arrivalTimeMax = shuttledriveWeb.Helpers.TimeHelper.getDate(timeArrival)
+
+        @model.set({offerDestinationAddress: to, offerOriginAddress: from})
+
         @model.saveWithOriginAndDestination(from, to, (id) ->
             $('#offerAdded').modal()
-            #shuttledriveWeb.app.navigate 'tripoffer/' + id, {trigger: true}
+            $("#offerAdded").on "hidden", ->
+                    shuttledriveWeb.app.navigate 'tripoffer/' + id, {trigger: true}
         )

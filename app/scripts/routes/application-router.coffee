@@ -25,8 +25,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                 console.log error
                 console.log 'fail'
 
-
-
     tripOfferRoute: ->
         tripOffer = new shuttledriveWeb.Models.TripOfferModel()
         new shuttledriveWeb.Views.TripOfferView({model:tripOffer})
