@@ -6,22 +6,28 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "": "indexRoute"
 
     tripRequestRoute: (id) ->
-        $('#content').html('') # empty the div each time the route gets called
-        tripRequest = new shuttledriveWeb.Models.TripRequestModel({id: id})
-        tripRequest.fetch
-            success: (data) ->
-                view = new shuttledriveWeb.Views.TripRequestView({model: data})
-                console.log view
-                $(view.render()).appendTo('#content').hide().fadeIn()
-            error: (data, error) ->
+        # $('#content').html('') # empty the div each time the route gets called
+        # tripRequest = new shuttledriveWeb.Models.TripRequestModel({id: id})
+        # tripRequest.fetch
+        #     success: (data) ->
+        #         view = new shuttledriveWeb.Views.TripRequestView({model: data})
+        #         console.log view
+        #         $(view.render()).appendTo('#content').hide().fadeIn()
+        #     error: (data, error) ->
                 #
 
         match = new shuttledriveWeb.Models.TripMatchesModel({id: id})
         match.fetch
             success: (data) ->
                 view = new shuttledriveWeb.Views.MatchView({model: data})
-                console.log view
+                console.log data
                 $(view.render()).appendTo('#content').hide().fadeIn()
+                for tripMatch in data.get 'tripMatches'
+                    if tripMatch.offerState is "1"
+                        console.log '#'+tripMatch.matchId
+                        $('#'+tripMatch.matchId).attr("disabled","true")
+                        $('#'+tripMatch.matchId).html('&#x2713; Joined')
+                        $('#'+tripMatch.matchId).toggleClass('btn-primary btn-success')
             error: (data,error) ->
                 console.log error
                 console.log 'fail'

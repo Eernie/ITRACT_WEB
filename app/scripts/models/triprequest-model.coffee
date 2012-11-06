@@ -60,19 +60,19 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
 
     parse: (resp, xhr) ->
         console.log resp
-        requestId: resp.tripRequest.requestId
-        requestUser: resp.tripRequest.requestUser
-        requestOriginAddress: resp.tripRequest.requestOriginAddress
-        requestOriginLong: resp.tripRequest.requestOriginLong
-        requestOriginLat: resp.tripRequest.requestOriginLat
-        requestOriginWindow: resp.tripRequest.requestOriginWindow
-        requestDestinationAddress: resp.tripRequest.requestDestinationAddress
-        requestDestinationLong: resp.tripRequest.requestDestinationLong
-        requestDestinationLat: resp.tripRequest.requestDestinationLat
-        requestDestinationWindow: resp.tripRequest.requestDestinationWindow
-        requestStartTimeMin: resp.tripRequest.requestStartTimeMin
-        requestStartTimeMax: resp.tripRequest.requestStartTimeMax
-        requestEndTimeMin: resp.tripRequest.requestEndTimeMin
-        requestEndTimeMax: resp.tripRequest.requestEndTimeMax
-        requestNumberOfSeats: resp.tripRequest.requestNumberOfSeats
-        requestState: resp.tripRequest.requestState
+        requestId: resp.requestId
+        requestUser: resp.requestUser
+        requestOriginAddress: resp.requestOriginAddress
+        requestOriginLong: resp.requestOriginLong
+        requestOriginLat: resp.requestOriginLat
+        requestOriginWindow: resp.requestOriginWindow
+        requestDestinationAddress: resp.requestDestinationAddress
+        requestDestinationLong: resp.requestDestinationLong
+        requestDestinationLat: resp.requestDestinationLat
+        requestDestinationWindow: resp.requestDestinationWindow
+        requestStartTimeMin: resp.requestStartTimeMin
+        requestStartTimeMax: resp.requestStartTimeMax
+        requestEndTimeMin: resp.requestEndTimeMin
+        requestEndTimeMax: resp.requestEndTimeMax
+        requestNumberOfSeats: resp.requestNumberOfSeats
+        requestState: resp.requestState
