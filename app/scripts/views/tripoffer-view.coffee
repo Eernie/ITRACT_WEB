@@ -2,7 +2,7 @@ class shuttledriveWeb.Views.TripOfferView extends Backbone.View
     el: $ '#content'
 
     events:
-        "click #trip-request-submit": "createOnSubmit"
+        "click #trip-offer-submit": "createOnSubmit"
 
     initialize: ->
         _.bindAll @
