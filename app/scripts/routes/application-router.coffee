@@ -26,11 +26,12 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
             error: (data, error) ->
                 #
 
+    tripOfferRoute: ->
+        tripOffer = new shuttledriveWeb.Models.TripOfferModel()
+        new shuttledriveWeb.Views.TripOfferView({model:tripOffer})
+
     indexRoute: ->
         tripRequest = new shuttledriveWeb.Models.TripRequestModel()
         new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
-        applicationView = new shuttledriveWeb.Views.ApplicationView()
 
-    tripOfferRoute: ->
-        #applicationView = new shuttledriveWeb.Views.ApplicationView()
-        tripOfferView = new shuttledriveWeb.Views.TripOfferView()
+
