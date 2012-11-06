@@ -2,11 +2,11 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     defaults:
         requestId: ''
         requestUser: ''
-        requestOriginAddress: ''
+        #requestOriginAddress: ''
         requestOriginLong: ''
         requestOriginLat: ''
         requestOriginWindow: ''
-        requestDestinationAddress: ''
+        #requestDestinationAddress: ''
         requestDestinationLong: ''
         requestDestinationLat: ''
         requestDestinationWindow: ''
@@ -17,13 +17,25 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         requestNumberOfSeats: 4
         requestState: ''
 
+
+    validation:
+        requestDestinationAddress:
+            required: true
+            msg: 'Please enter an arrival location'
+        requestOriginAddress:
+            required: true
+            msg: 'Please enter a departure location'
+
+
+
     urlRoot: ->
         shuttledriveWeb.rootPath + '/trip_request'
-        # 'http://145.37.60.50:8080/trip_request'
 
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @set 'requestOriginAddress': origin
         @set 'requestDestinationAddress': destination
+        console.log(origin)
+        console.log(@requestOriginAddress)
         @getLatLong @, origin, (caller, result) ->
             caller.set 'requestOriginLat': result.Ya
             caller.set 'requestOriginLong':  result.Za
