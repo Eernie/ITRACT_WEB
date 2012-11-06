@@ -4,12 +4,11 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "": "indexRoute"
 
     tripRequestRoute: (id) ->
+        $('#content').html('') # empty the div each time the route gets called
         match = new shuttledriveWeb.Models.TripMatchesModel({id: id})
         match.fetch
             success: (data) ->
                 view = new shuttledriveWeb.Views.MatchView({model: data})
-                console.log view
-                $('#content').html('') # empty the div each time the route gets called
                 $(view.render()).appendTo('#content').hide().fadeIn()
             error: (data,error) ->
                 console.log error
@@ -19,7 +18,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         tripRequest.fetch
             success: (data) ->
                 view = new shuttledriveWeb.Views.TripRequestView({model: data})
-                console.log view
                 $(view.render()).appendTo('#content').hide().fadeIn()
             error: (data, error) ->
                 #
