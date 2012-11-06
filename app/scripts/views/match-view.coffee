@@ -1,6 +1,4 @@
 class shuttledriveWeb.Views.MatchView extends Backbone.View
-    model: shuttledriveWeb.Models.tripMatchesModel
-
     events:
         "click .apply-join": "createOnJoin"
 
@@ -29,7 +27,7 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
                         $(element.currentTarget).toggleClass('btn-primary btn-success')
 
                     error: ->
-                        console.log "we fail! Yellow submarine"
+                        console.log ' error'
                 )
 
             error:(data, error) ->

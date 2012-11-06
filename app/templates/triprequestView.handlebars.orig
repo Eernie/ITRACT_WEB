@@ -1,8 +1,13 @@
 <div class="triprequest well">
     <h3>Trip request</h3>
-	<p>
+<<<<<<< HEAD
+    <p>
         <small>Request date: {{dateFormat requestStartTimeMin}}}</small>
     </p>
+    <p>From: {{requestOriginAddress}}</p>
+    <p>To: {{requestDestinationAddress}}</p>
+        <img src="http://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{requestOriginLat}}, {{requestOriginLong}}&markers=color:Red%7Clabel:B%7C{{requestDestinationLat}}, {{requestDestinationLong}}&sensor=false"></img>
+=======
     <div class="row">
         <div class="span5">
             <p>From: {{requestOriginAddress}}</p>
@@ -12,4 +17,5 @@
             <img src="http://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{requestOriginLat}}, {{requestOriginLong}}&markers=color:Red%7Clabel:B%7C{{requestDestinationLat}}, {{requestDestinationLong}}&sensor=false"></img>
         </div>
     </div>
+>>>>>>> master
 </div>
