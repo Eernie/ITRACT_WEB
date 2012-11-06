@@ -81,7 +81,7 @@ module.exports = function( grunt ) {
         'app/templates/*.handlebars',
         'app/templates/**/*.handlebars'
         ],
-        tasks: 'handlebars'
+        tasks: 'Handlebasrs reload'
       },
       reload: {
         files: [
