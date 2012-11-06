@@ -25,5 +25,5 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                 #
 
     indexRoute: ->
-        tripRequest = lnew shuttledriveWeb.Models.TripRequestModel()
+        tripRequest = new shuttledriveWeb.Models.TripRequestModel()
         new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
