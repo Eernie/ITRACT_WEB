@@ -1,0 +1,15 @@
+<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs span4">
+        {{#each tripRequestCollection}}
+            <li id="request_{{this.requestId}}">
+                <a data-toggle="tab" class="requestTab">
+                    <span class="badge badge-info">{{dateFormatTimeOnly this.requestStartTimeMin}}</span>
+                    {{this.requestOriginAddress}}<br> 
+                    <span class="badge badge-info">{{dateFormatTimeOnly this.requestEndTimeMax}}</span>
+                    {{this.requestDestinationAddress}}
+                    <div class="disclosure pull-right"></div>
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

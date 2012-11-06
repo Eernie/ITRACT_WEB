@@ -3,6 +3,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "triprequest/:id": "tripRequestRoute"
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
+        "tripoverview": "tripOverviewRoute"
         "": "indexRoute"
 
     tripRequestRoute: (id) ->
@@ -32,4 +33,5 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         tripRequest = new shuttledriveWeb.Models.TripRequestModel()
         new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
 
-
+    tripOverviewRoute: ->
+        new shuttledriveWeb.Views.TripOverviewView()
