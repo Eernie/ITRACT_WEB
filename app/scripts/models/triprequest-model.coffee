@@ -2,20 +2,31 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     defaults:
         requestId: ''
         requestUser: ''
-        requestOriginAddress: ''
+        #requestOriginAddress: ''
         requestOriginLong: ''
         requestOriginLat: ''
         requestOriginWindow: ''
-        requestDestinationAddress: ''
+        #requestDestinationAddress: ''
         requestDestinationLong: ''
         requestDestinationLat: ''
         requestDestinationWindow: ''
-        requestStartTimeMin: ''
-        requestStartTimeMax: ''
-        requestEndTimeMin: ''
-        requestEndTimeMax: ''
-        requestNumberOfSeats: ''
+        requestStartTimeMin: 1
+        requestStartTimeMax: 1
+        requestEndTimeMin: 1
+        requestEndTimeMax: 1
+        requestNumberOfSeats: 4
         requestState: ''
+
+
+    validation:
+        requestDestinationAddress:
+            required: true
+            msg: 'Please enter an arrival location'
+        requestOriginAddress:
+            required: true
+            msg: 'Please enter a departure location'
+
+
 
     urlRoot: ->
         shuttledriveWeb.rootPath + '/trip_request'
@@ -23,14 +34,18 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @set 'requestOriginAddress': origin
         @set 'requestDestinationAddress': destination
+        console.log(origin)
+        console.log(@requestOriginAddress)
         @getLatLong @, origin, (caller, result) ->
             caller.set 'requestOriginLat': result.Ya
             caller.set 'requestOriginLong':  result.Za
         @getLatLong @, destination, (caller, result) ->
             caller.set 'requestDestinationLat': result.Ya
             caller.set 'requestDestinationLong': result.Za
-            caller.save({}, 
+            caller.save(caller.toJSON(), 
                 success: ->
+                    console.log caller
+                    console.log caller.get 'requestId'
                     callback(caller.get('requestId'))
                 error: ->
                     console.log 'error')
@@ -42,3 +57,21 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 result = results[0].geometry.location
                 callback(caller, result)
             # else throw error TODO: add throw statement
+
+    parse: (resp, xhr) ->
+        requestId: resp.tripRequest.requestId
+        requestUser: resp.tripRequest.requestUser
+        requestOriginAddress: resp.tripRequest.requestOriginAddress
+        requestOriginLong: resp.tripRequest.requestOriginLong
+        requestOriginLat: resp.tripRequest.requestOriginLat
+        requestOriginWindow: resp.tripRequest.requestOriginWindow
+        requestDestinationAddress: resp.tripRequest.requestDestinationAddress
+        requestDestinationLong: resp.tripRequest.requestDestinationLong
+        requestDestinationLat: resp.tripRequest.requestDestinationLat
+        requestDestinationWindow: resp.tripRequest.requestDestinationWindow
+        requestStartTimeMin: resp.tripRequest.requestStartTimeMin
+        requestStartTimeMax: resp.tripRequest.requestStartTimeMax
+        requestEndTimeMin: resp.tripRequest.requestEndTimeMin
+        requestEndTimeMax: resp.tripRequest.requestEndTimeMax
+        requestNumberOfSeats: resp.tripRequest.requestNumberOfSeats
+        requestState: resp.tripRequest.requestState
