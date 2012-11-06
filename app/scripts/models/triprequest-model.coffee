@@ -10,10 +10,10 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         requestDestinationLong: ''
         requestDestinationLat: ''
         requestDestinationWindow: '1'
-        #requestStartTimeMin: 0
-        #requestStartTimeMax: 0
-        #requestEndTimeMin: 0
-        #requestEndTimeMax: 0
+        requestStartTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
+        requestStartTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
+        requestEndTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
+        requestEndTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
         requestNumberOfSeats: 4
         requestState: ''
 

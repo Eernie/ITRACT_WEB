@@ -5,16 +5,16 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
         #offerOriginAddress: ''
         offerOriginLong: ''
         offerOriginLat: ''
-        offerOriginWindow: '1'
+        offerOriginWindow: 500
         #offerDestinationAddress: ''
         offerDestinationLong: ''
         offerDestinationLat: ''
-        offerDestinationWindow: '1'
-        #offerStartTimeMin: 0
-        #offerStartTimeMax: 0
-        #offerEndTimeMin: 0
-        #offerEndTimeMax: 0
-        offerNumberOfSeats: '4'
+        offerDestinationWindow: 500
+        offerStartTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
+        offerStartTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
+        offerEndTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
+        offerEndTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
+        offerNumberOfSeats: 4
         offerState: ''
 
     validation:
