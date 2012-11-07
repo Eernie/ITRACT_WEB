@@ -4,6 +4,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
         "": "indexRoute"
+        "login": "loginRoute"
 
     tripRequestRoute: (id) ->
         $('#content').html('') # empty the div each time the route gets called
@@ -33,4 +34,5 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         tripRequest = new shuttledriveWeb.Models.TripRequestModel()
         new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
 
-
+    loginRoute: ->
+        new shuttledriveWeb.Views.LoginView()
