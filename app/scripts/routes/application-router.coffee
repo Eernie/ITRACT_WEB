@@ -22,7 +22,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                 view = new shuttledriveWeb.Views.MatchView({model: data})
                 $(view.render()).appendTo('#content').hide().fadeIn()
                 for tripMatch in data.get 'tripMatches'
-                    if tripMatch.matchState is "POTENTIAL"
+                    if tripMatch.matchState is not 0
                         $('#'+tripMatch.matchId).attr("disabled","true")
                         $('#'+tripMatch.matchId).html('&#x2713; Joined')
                         $('#'+tripMatch.matchId).toggleClass('btn-primary btn-success')
