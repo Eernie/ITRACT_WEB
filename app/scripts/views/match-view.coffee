@@ -4,12 +4,11 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
 
     render:  ->
         context = {
-            'request': @model.get('tripRequest'),
-            'matches': @model.get('tripMatches')
+            'matches': @model
         }
-
-        console.log context
+        console.log @model
         $(@el).html(Handlebars.templates['matchView'](context))
+
 
     createOnJoin: (element)->
         id = $(element.currentTarget).attr("id")
@@ -23,7 +22,7 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
                     ,
                     success: ->
                         $(element.currentTarget).attr("disabled","true")
-                        $(element.currentTarget).html('&#x2713; Joined')
+                        $(element.currentTarget).html('&#x2713; Request sent')
                         $(element.currentTarget).toggleClass('btn-primary btn-success')
 
                     error: ->

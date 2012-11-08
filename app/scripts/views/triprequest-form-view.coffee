@@ -18,7 +18,7 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
     createOnSubmit: ->
         from = $('#from').val()
         to = $('#to').val()
-        @model.set({requestOriginAddress: from, requestDestinationAddress: to})
+        @model.set({originAddress: from, destinationAddress: to})
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
             shuttledriveWeb.app.navigate 'triprequest/' + id, {trigger: true}

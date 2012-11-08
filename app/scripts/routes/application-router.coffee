@@ -11,25 +11,15 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         tripRequest = new shuttledriveWeb.Models.TripRequestModel({id: id})
         tripRequest.fetch
             success: (data) ->
+                console.log data
                 view = new shuttledriveWeb.Views.TripRequestView({model: data})
                 $(view.render()).appendTo('#content').hide().fadeIn()
+                matchView = new shuttledriveWeb.Views.MatchView({model: data.get('matches')})
+                $(matchView.render()).appendTo('#content').hide().fadeIn()
+                $('.user-popover').popover()
             error: (data, error) ->
                 #
-
-        match = new shuttledriveWeb.Models.TripMatchesModel({id: id})
-        match.fetch
-            success: (data) ->
-                view = new shuttledriveWeb.Views.MatchView({model: data})
-                $(view.render()).appendTo('#content').hide().fadeIn()
-                for tripMatch in data.get 'tripMatches'
-                    if tripMatch.matchState is not 0
-                        $('#'+tripMatch.matchId).attr("disabled","true")
-                        $('#'+tripMatch.matchId).html('&#x2713; Joined')
-                        $('#'+tripMatch.matchId).toggleClass('btn-primary btn-success')
-            error: (data,error) ->
-                console.log error
-                console.log 'fail'
-
+                
     tripOfferRoute: ->
         tripOffer = new shuttledriveWeb.Models.TripOfferModel()
         new shuttledriveWeb.Views.TripOfferView({model:tripOffer})
