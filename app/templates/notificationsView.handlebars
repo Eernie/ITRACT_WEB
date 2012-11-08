@@ -1,0 +1,17 @@
+<ul class="nav nav-pills nav-stacked">
+    {{#each notifications}}
+    <li><a href="#{{id}}" id="link{{id}}" class="notificationLink" data-toggle="modal">{{title}}</a></li>
+    {{/each}}
+</ul>
+
+{{#each notifications}}
+    <div id="{{id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-body">
+            {{message}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-success" data-dismiss="modal" class="confirm">Confirm</button>
+        </div>
+    </div>
+{{/each}}

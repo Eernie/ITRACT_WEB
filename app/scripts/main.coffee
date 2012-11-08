@@ -3,9 +3,11 @@ window.shuttledriveWeb =
     Collections: {}
     Views: {}
     Routers: {}
-    rootPath: 'http://localhost:5000'
+    Helpers: {}
+    rootPath: 'http://145.33.225.224:8080'
     init: ->
-        new shuttledriveWeb.Routers.ApplicationRouter()
+        new shuttledriveWeb.Views.MenuView()
+        shuttledriveWeb.app = new shuttledriveWeb.Routers.ApplicationRouter()
         Backbone.history.start()
     
 $(document).ready ->

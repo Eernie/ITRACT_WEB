@@ -1,0 +1,18 @@
+.disclosure {
+    background-image: url('../images/disclosure.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: 50px;
+    height: 50px;
+    margin-right: -60px;
+    margin-top: -25px;
+}
+
+.nav li a {
+    padding-right: 50px;
+    margin-right: -60px;
+}
+
+.nav li a:hover {
+    padding-right: 50px;
+}
