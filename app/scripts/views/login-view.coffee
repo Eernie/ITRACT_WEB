@@ -13,4 +13,13 @@ class shuttledriveWeb.Views.LoginView extends Backbone.View
         $(@el).html(Handlebars.templates['loginView'](context))
 
     createOnSubmit: ->
-        shuttledriveWeb.app.navigate 'triprequest/'
+        user = $('#username').val()
+        password = $('#password').val()
+        token = shuttledriveWeb.Helpers.EncodingHelper.toBase64(user+password)
+        session = new shuttledriveWeb.Models.Session()
+        session.authUser(token, (id) ->
+            session.saveCookie(id, token)
+            session = new shuttledriveWeb.Models.Session()
+            shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
+        )
+

@@ -29,7 +29,7 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
 
 
     urlRoot: ->
-        shuttledriveWeb.rootPath + '/trip_request'
+        shuttledriveWeb.rootPath + '/api/trip_request'
 
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @getLatLong @, origin, (caller, result) ->

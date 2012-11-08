@@ -23,3 +23,8 @@ shuttledriveWeb.Helpers.TimeHelper =
         date = @createDate(timeString)
         date.setHours(date.getHours() - hours)
         @formatUnixTimestamp(date)
+
+shuttledriveWeb.Helpers.EncodingHelper =
+    toBase64: (str) ->
+        words = CryptoJS.enc.Latin1.parse(str)
+        CryptoJS.enc.Base64.stringify(words)
