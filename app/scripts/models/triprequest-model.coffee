@@ -1,22 +1,16 @@
 class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
     defaults:
-        requestId: ''
-        requestUser: '1'
-        #requestOriginAddress: ''
-        requestOriginLong: ''
-        requestOriginLat: ''
-        requestOriginWindow: '1'
-        #requestDestinationAddress: ''
-        requestDestinationLong: ''
-        requestDestinationLat: ''
-        requestDestinationWindow: '1'
-        requestStartTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
-        requestStartTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
-        requestEndTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
-        requestEndTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
-        requestNumberOfSeats: 4
-        requestState: ''
-
+        originLong: ''
+        originLat: ''
+        destinationLong: ''
+        destinationLat: ''
+        startTimeMin: 1352464648
+        startTimeMax: 1352471817
+        endTimeMin: 1352478409
+        endTimeMax: 1352485578
+        numberOfSeats: 1
+        originAddress: ''
+        destinationAddress: ''
 
     validation:
         requestDestinationAddress:
@@ -26,21 +20,19 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
             required: true
             msg: 'Please enter a departure location'
 
-
-
     urlRoot: ->
         shuttledriveWeb.rootPath + '/api/trip_request'
 
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @getLatLong @, origin, (caller, result) ->
-            caller.set 'requestOriginLat': result.Ya
-            caller.set 'requestOriginLong':  result.Za
+            caller.set 'originLat': result.Ya
+            caller.set 'originLong':  result.Za
         @getLatLong @, destination, (caller, result) ->
-            caller.set 'requestDestinationLat': result.Ya
-            caller.set 'requestDestinationLong': result.Za
+            caller.set 'destinationLat': result.Ya
+            caller.set 'destinationLong': result.Za
             caller.save(caller.toJSON(),
                 success: ->
-                    callback(caller.get('requestId'))
+                    callback(caller.get('id'))
                 error: ->
                     console.log 'error')
 
@@ -52,39 +44,3 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 callback(caller, result)
             # else throw error TODO: add throw statement
 
-
-    parse: (resp, xhr) ->
-        if resp.tripMatches
-            requestId: resp.tripRequest.requestId
-            requestUser: resp.tripRequest.requestUser
-            requestOriginAddress: resp.tripRequest.requestOriginAddress
-            requestOriginLong: resp.tripRequest.requestOriginLong
-            requestOriginLat: resp.tripRequest.requestOriginLat
-            requestOriginWindow: resp.tripRequest.requestOriginWindow
-            requestDestinationAddress: resp.tripRequest.requestDestinationAddress
-            requestDestinationLong: resp.tripRequest.requestDestinationLong
-            requestDestinationLat: resp.tripRequest.requestDestinationLat
-            requestDestinationWindow: resp.tripRequest.requestDestinationWindow
-            requestStartTimeMin: resp.tripRequest.requestStartTimeMin
-            requestStartTimeMax: resp.tripRequest.requestStartTimeMax
-            requestEndTimeMin: resp.tripRequest.requestEndTimeMin
-            requestEndTimeMax: resp.tripRequest.requestEndTimeMax
-            requestNumberOfSeats: resp.tripRequest.requestNumberOfSeats
-            requestState: resp.tripRequest.requestState
-        else
-            requestId: resp.requestId
-            requestUser: resp.requestUser
-            requestOriginAddress: resp.requestOriginAddress
-            requestOriginLong: resp.requestOriginLong
-            requestOriginLat: resp.requestOriginLat
-            requestOriginWindow: resp.requestOriginWindow
-            requestDestinationAddress: resp.requestDestinationAddress
-            requestDestinationLong: resp.requestDestinationLong
-            requestDestinationLat: resp.requestDestinationLat
-            requestDestinationWindow: resp.requestDestinationWindow
-            requestStartTimeMin: resp.requestStartTimeMin
-            requestStartTimeMax: resp.requestStartTimeMax
-            requestEndTimeMin: resp.requestEndTimeMin
-            requestEndTimeMax: resp.requestEndTimeMax
-            requestNumberOfSeats: resp.requestNumberOfSeats
-            requestState: resp.requestState

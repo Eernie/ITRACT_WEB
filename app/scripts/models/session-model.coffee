@@ -27,6 +27,7 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
             error: ->
                 console.log 'error'
                 callback('2')
+        )
 
 
 
@@ -41,7 +42,6 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
         sync = Backbone.sync
         Backbone.sync = (method, model, options) ->
             options.beforeSend = (xhr) ->
-                xhr.setRequestHeader "Authorization", @get('access_token')
+                xhr.setRequestHeader "Authorization", @access_token
 
             sync method, model, options
-

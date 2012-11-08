@@ -1,19 +1,19 @@
 <div class="well">
-    <h3>Matching offerState</h3>
+    <h3>Matches</h3>
     <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-tabs">
         {{#each matches}}  
             <li>
-                <a href="#match{{matchId}}" data-toggle="tab">
+                <a href="#match{{id}}" data-toggle="tab">
 
-                    From {{offerOriginAddress}} 
+                    From {{tripOffer.originAddress}} 
                     {{#if offerStartTimeMin}}
-                        <span class="badge badge-info">{{dateFormatTimeOnly offerStartTimeMin}}</span>
+                        <span class="badge badge-info">{{dateFormatTimeOnly tripOffer.startTimeMin}}</span>
                     {{/if}}
                     <br>
-                    To {{offerDestinationAddress}} 
+                    To {{tripOffer.destinationAddress}} 
                     {{#if offerEndTimeMin}}
-                        <span class="badge badge-info">{{dateFormatTimeOnly offerEndTimeMin}}</span>
+                        <span class="badge badge-info">{{dateFormatTimeOnly tripOffer.endTimeMin}}</span>
                     {{/if}}
                     <span class="disclosure pull-right"></span>
                 </a>
@@ -22,28 +22,41 @@
         </ul>
         <div class="tab-content">
         {{#each matches}}
-            <div class="tab-pane fade" id="match{{matchId}}">
+            <div class="tab-pane fade" id="match{{id}}">
+                <h3>Trip Offer #{{id}}</h3>
+                <p>
+                    <img src="http://maps.googleapis.com/maps/api/staticmap?size=400x200&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{tripOffer.originLat}}, {{tripOffer.originLong}}&markers=color:Red%7Clabel:B%7C{{tripOffer.destinationLat}}, {{tripOffer.destinationLong}}&sensor=false"></img>
+                </p>
                 <p>
                     <table class="table table-striped table-hover table-bordered">
                         <tr>
-                            <td>Name</td><td>Sjaak Swart</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td><td>Hoofdstraat 15</td>
-                        </tr>
-                        <tr>
-                            <td>Status</td><td>{{capitalize offerState}}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                From: {{offerOriginAddress}} <br>
-                                To: {{offerDestinationAddress}}
-                            </td><td>
-                                <img src="http://maps.googleapis.com/maps/api/staticmap?size=300x150&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{offerOriginLat}}, {{offerOriginLong}}&markers=color:Red%7Clabel:B%7C{{offerDestinationLat}}, {{offerDestinationLong}}&sensor=false"></img>
+                            <td>Driver</td><td>
+                                <a class="user-popover" rel="popover" data-placement="right" data-content="<div><p>Name: Sjaak Swart</p><p>Age: 29</p><p>Sex: Male</p><p>Rating: 4</p></div><div style='float:right;'><img src='http://static1.robohash.org/sjaak-swart.png'></img></div>" data-original-title="User">
+                                    Sjaak Swart
+                                </a>
                             </td>
                         </tr>
+                        <tr>
+                            <td>From</td>
+                            <td>{{tripOffer.originAddress}} <span class="badge badge-important">A</span></p></td>
+                        </tr>
+                        <tr>
+                            <td>To</td>
+                            <td>{{tripOffer.destinationAddress}} <span class="badge badge-important">B</span></p></td>
+                        </tr>
+                        <tr>
+                            <td>Departure time</td>
+                            <td>{{dateFormatTimeOnly tripOffer.startTimeMin}}</td>
+                        </tr>
+                        <tr>
+                            <td>Arrival time</td>
+                            <td>{{dateFormatTimeOnly tripOffer.endTimeMin}}</td>
+                        </tr>
+                        <tr>
+                            <td>Match status</td><td>{{capitalize state}}</td>
+                        </tr>
                     </table>
-                    <button class="btn btn-primary pull-right apply-join" id="{{matchId}}">Join</button>
+                    <button class="btn btn-primary apply-join" id="{{matchId}}">Request to join</button>
                 </p>
             </div>
         {{/each}}
