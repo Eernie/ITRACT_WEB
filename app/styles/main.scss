@@ -23,7 +23,10 @@ body {
     margin-right:0 !important;
 }
 
-#notifications:hover
-{
+#notifications:hover, .user-popover:hover {
     cursor:pointer;
+}
+
+.popover {
+    width: 300px;
 }
