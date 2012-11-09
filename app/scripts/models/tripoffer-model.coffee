@@ -27,7 +27,7 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
 
 
     urlRoot: ->
-        shuttledriveWeb.rootPath + '/trip_offer'
+        shuttledriveWeb.rootPath + '/api/trip_offer'
 
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @getLatLong @, origin, (caller, result) ->
@@ -41,6 +41,8 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
                     callback(caller.get('offerId'))
                 error: ->
                     console.log 'error')
+
+
 
     getLatLong: (caller, address, callback) ->
         geocoder = new google.maps.Geocoder()

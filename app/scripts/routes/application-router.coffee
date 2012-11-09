@@ -13,22 +13,23 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             $('#content').html('') # empty the div each time the route gets called
-
+            console.log(new shuttledriveWeb.Models.Session().get('access_token'))
             tripRequest = new shuttledriveWeb.Models.TripRequestModel({id: id})
-            tripRequest.fetch
+            tripRequest.fetch(
+                headers:
+                    "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                 success: (data) ->
+                    console.log data
+
                     view = new shuttledriveWeb.Views.TripRequestView({model: data})
                     $(view.render()).appendTo('#content').hide().fadeIn()
+                    matchView = new shuttledriveWeb.Views.MatchView({model: data.get('matches')})
+                    $(matchView.render()).appendTo('#content').hide().fadeIn()
+                    $('.user-popover').popover()
                 error: (data, error) ->
-                    #
-
-            match = new shuttledriveWeb.Models.TripMatchesModel({id: id})
-            match.fetch
-                success: (data) ->
-                    view = new shuttledriveWeb.Views.MatchView({model: data})
-                    $(view.render()).appendTo('#content').hide().fadeIn()
-                error: (data,error) ->
-                    console.log error
+                    console.log(data)
+                    console.log(error)
+            )
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
@@ -41,7 +42,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
     indexRoute: ->
-        console.log("is authenticated")
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             console.log("is authenticated")
