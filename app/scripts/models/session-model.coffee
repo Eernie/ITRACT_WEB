@@ -11,7 +11,8 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
         Boolean(@get("access_token"))
 
     urlRoot: ->
-        shuttledriveWeb.rootPath + '/api/login'
+        shuttledriveWeb.rootPath + '/login'
+        shuttledriveWeb.rootPath + '/login'
 
     # Saves session information to cookie
     saveCookie: (id, access_token) ->
@@ -24,7 +25,7 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
             headers:
                 "Authorization": token
             success: (data) ->
-                callback(data.get('userId'))
+                callback(data.get('id'))
             error: ->
                 console.log 'error'
         )

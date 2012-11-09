@@ -13,11 +13,10 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             $('#content').html('') # empty the div each time the route gets called
-            console.log(new shuttledriveWeb.Models.Session().get('access_token'))
             tripRequest = new shuttledriveWeb.Models.TripRequestModel({id: id})
             tripRequest.fetch(
-                headers:
-                    "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
+                #headers:
+                #    "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                 success: (data) ->
                     console.log data
 

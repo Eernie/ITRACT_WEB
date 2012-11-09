@@ -4,10 +4,6 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         originLat: ''
         destinationLong: ''
         destinationLat: ''
-        startTimeMin: 1352464648
-        startTimeMax: 1352471817
-        endTimeMin: 1352478409
-        endTimeMax: 1352485578
         numberOfSeats: 1
         originAddress: ''
         destinationAddress: ''
@@ -21,7 +17,7 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
             msg: 'Please enter a departure location'
 
     urlRoot: ->
-        shuttledriveWeb.rootPath + '/api/trip_request'
+        shuttledriveWeb.rootPath + '/trip_request'
 
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @getLatLong @, origin, (caller, result) ->
