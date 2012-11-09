@@ -36,6 +36,8 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
                 error: ->
                     console.log 'error')
 
+
+
     getLatLong: (caller, address, callback) ->
         geocoder = new google.maps.Geocoder()
         geocoder.geocode { address: address }, (results, status) =>

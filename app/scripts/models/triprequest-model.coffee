@@ -13,10 +13,10 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         destinationAddress: ''
 
     validation:
-        requestDestinationAddress:
+        destinationAddress:
             required: true
             msg: 'Please enter an arrival location'
-        requestOriginAddress:
+        originAddress:
             required: true
             msg: 'Please enter a departure location'
 
@@ -31,6 +31,8 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
             caller.set 'destinationLat': result.Ya
             caller.set 'destinationLong': result.Za
             caller.save(caller.toJSON(),
+                headers:
+                    "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                 success: ->
                     callback(caller.get('id'))
                 error: ->
@@ -43,4 +45,5 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 result = results[0].geometry.location
                 callback(caller, result)
             # else throw error TODO: add throw statement
+
 
