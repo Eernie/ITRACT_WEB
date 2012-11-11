@@ -4,10 +4,7 @@ class shuttledriveWeb.Views.MenuView extends Backbone.View
     initialize: ->
         @render()
 
-    render: ->
-        
-        
+    render: ->      
         $(@el).html(Handlebars.templates['menuView']({}))
-
         notification = new shuttledriveWeb.Views.NotificationView({collection: new shuttledriveWeb.Collections.NotificationCollection()})
         
