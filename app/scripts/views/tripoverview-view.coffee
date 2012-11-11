@@ -6,7 +6,7 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
 
     events:
         "click .nav a": "navigate"
-        "click .requestTab": "requestDetail"
+        #"click .requestTab": "requestDetail"
 
     initialize: ->
         _.bindAll @
@@ -20,7 +20,9 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
         navigate = $(e.target).parent().attr 'id'
         if navigate is 'nav_requests'
             tripRequestCollection = new shuttledriveWeb.Collections.TripRequestCollection()
-            new shuttledriveWeb.Views.TripOverviewMiddleTabView({collection : tripRequestCollection, template : 'tripRequestOverviewView'})
+            tripRequestCollection.fetch
+                success: ->
+                    new shuttledriveWeb.Views.TripOverviewMiddleTabView({collection : tripRequestCollection, template : 'tripRequestOverviewView'})
         else if navigate is 'nav_offers'
             $('.tab-content').html(Handlebars.templates['tripRequestOverviewView']())
         else if navigate is 'nav_matches'

@@ -16,15 +16,18 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
         match = new shuttledriveWeb.Models.TripMatchModel({id: id})
         match.fetch # why are we fetching the match here
             success:(data) ->
-                data.set 'matchState': 'POTENTIAL' # and then updating it here
+                data.set 'matchState': 1 # and then updating it here
                 data.set 'confirm': true
                 data.save(
                     data.toJSON # only to save it again here, while we already fetched the model in the router
                     ,
                     success: ->
-                        console.log "we successed!"
+                        $(element.currentTarget).attr("disabled","true")
+                        $(element.currentTarget).html('&#x2713; Joined')
+                        $(element.currentTarget).toggleClass('btn-primary btn-success')
+
                     error: ->
-                        console.log "we fail! Yellow submarine"
+                        console.log ' error'
                 )
 
             error:(data, error) ->

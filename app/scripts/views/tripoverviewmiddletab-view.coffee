@@ -1,32 +1,20 @@
 class shuttledriveWeb.Views.TripOverviewMiddleTabView extends Backbone.View
     el: $ '#middle-tab-content'
 
+    events:
+        "click .requestTab": "modelDetail"
+
     initialize: ->
         @el = $ '#middle-tab-content'
         _.bindAll @, 'render'
-        @options.collection.bind 'reset', @render()
+        @render()
 
     render: ->
-        tripRequestCollection = this.options.collection
-        template = this.options.template
+        tripRequestCollection = @options.collection
+        template = @options.template
         context = {tripRequestCollection: tripRequestCollection.toJSON()}
-        console.log tripRequestCollection
-        $(@el).html(Handlebars.templates['tripRequestOverviewView'](context))
+        $(@el).html(Handlebars.templates[template](context))
 
-    navigate: (e) ->
-        navigate = $(e.target).parent().attr 'id'
-        if navigate is 'nav_requests'
-            tripRequestCollection = new shuttledriveWeb.Collections.TripRequestCollection()
-            tripRequestCollection.fetch
-                success: ->
-                    context = {tripRequestCollection: tripRequestCollection.toJSON()}
-                    $('.middle-tab-content').html(Handlebars.templates['tripRequestOverviewView'](context))
-                error: ->
-                    console.log 'error'
-        else if navigate is 'nav_offers'
-            $('.tab-content').html(Handlebars.templates['tripRequestOverviewView']())
-        else if navigate is 'nav_matches'
-            $('.tab-content').html(Handlebars.templates['tripRequestOverviewView']())
-
-    requestDetail: (e) ->
+    modelDetail: (e) ->
+        console.log 'wat'
         console.log $(e.target).parent().attr 'id'
