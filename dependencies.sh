@@ -1,5 +1,4 @@
 #!/bin/bash
-
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
    declare -r linux=true

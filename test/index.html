@@ -1,55 +1,50 @@
 <!doctype html>
-<head>
-  <title>Jasmine Spec Runner</title>
+    <head>
+        <title>Jasmine Spec Runner</title>
 
-  <link rel="stylesheet" href="lib/jasmine-1.2.0/jasmine.css">
-  <script src="lib/jasmine-1.2.0/jasmine.js"></script>
-  <script src="lib/jasmine-1.2.0/jasmine-html.js"></script>
+        <link rel="stylesheet" href="lib/jasmine-1.2.0/jasmine.css">
+        <script src="lib/jasmine-1.2.0/jasmine.js"></script>
+        <script src="lib/jasmine-1.2.0/jasmine-html.js"></script>
 
-  <!-- include source files here... -->
-  <script src="../js/main.js"></script>
+        <!-- include source files here... -->
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB0lcHPjqt73yynb_wV6HyIjTaB33Q8DpI&sensor=false"></script>
+        <script src="components/handlebars.js/handlebars.runtime-1.0.0-rc.1.js"></script>
+        <script src="scripts/templates/template.js"></script>
+        <script src="scripts/helpers/handlebars-helpers.js"></script>
+        <script src="scripts/vendor/jquery.min.js"></script>
+        <script src="scripts/vendor/lodash.min.js"></script>
+        <script src="scripts/vendor/backbone-min.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-tab.js"></script>
+        <script src="scripts/vendor/bootstrap-timepicker.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/routes/application-router.js"></script>
+        <script src="scripts/views/application-view.js"></script>
+        <script src="scripts/views/match-view.js"></script>
+        <script src="scripts/views/triprequest-view.js"></script>
+        <script src="scripts/collections/match-collection.js"></script>
+        <script src="scripts/models/tripmatch-model.js"></script>
+        <script src="scripts/models/triprequest-model.js"></script>
+        <script src="scripts/routes/application-router.js"></script>
+        <script src="scripts/models/tripmatch-model.js"></script>
 
-  <!-- include spec files here... -->
-  <!--
-    the `src/introduction.js` include the Jasmine introduction, with a
-    lot of inline comments to help you get started with Jasmine. This is
-    meant to be replaced by your own tests.
 
-    The same introduction than the Jasmine doc page:
-    http://pivotal.github.com/jasmine/
 
-    https://raw.github.com/pivotal/jasmine/gh-pages/src/introduction.js
-  -->
-  <script src="spec/introduction.js"></script>
+        <!--  include spec files here... 
+              The includes must be '.js' when including a '.coffee'
+              file. The reference to the '.coffee' is set after
+              compiling to '.js'.  
+        -->
+        <script src="spec/tripmatch-model-test.js"></script>
 
-  <!--
-    Choose a jasmine reporter.
+        <script>
+            if (window.phantom)
+                document.write('<script src="runner/headless.js"><\/script>');
+            else
+                document.write('<script src="runner/html.js"><\/script>');
+        </script>
 
-    runner/ directory includes both environment for basic HTML reporting
-    and a runner with the minimal amount of configuration required for
-    running Jasmine specs in an headless environment.
+    </head>
+    <body>
 
-    - headless.js:
-    If you are on Unix or Windows, notice that there are a few issues
-    running Jasmine specs via grunt-jasmine-task and PhantomJS if you
-    change this default environment (see
-    https://github.com/creynders/grunt-jasmine-task/issues/2 and
-    https://github.com/creynders/grunt-jasmine-task/issues/4)
-
-    - html.js:
-    You may choose to use a slighly different environment with
-    reporters like a jasmine.TrivialReporter or jasmine.HtmlReporter
-    to see the results py pointing your browser to your spec runner.
-  -->
-  <script>
-    if (window.phantom)
-      document.write('<script src="runner/headless.js"><\/script>');
-    else
-      document.write('<script src="runner/html.js"><\/script>');
-  </script>
-
-</head>
-<body>
-
-</body>
+    </body>
 </html>

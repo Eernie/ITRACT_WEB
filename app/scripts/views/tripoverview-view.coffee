@@ -22,9 +22,16 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
             tripRequestCollection = new shuttledriveWeb.Collections.TripRequestCollection()
             tripRequestCollection.fetch
                 success: ->
-                    new shuttledriveWeb.Views.TripOverviewMiddleTabView({collection : tripRequestCollection, template : 'tripRequestOverviewView'})
+                    new shuttledriveWeb.Views.TripRequestListView({collection : tripRequestCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
+                error: ->
+                    alert 'An error has occurt fetching the results of your trip requests'
         else if navigate is 'nav_offers'
-            $('.tab-content').html(Handlebars.templates['tripRequestOverviewView']())
+            tripOfferCollection = new shuttledriveWeb.Collections.TripOfferCollection()
+            tripOfferCollection.fetch
+                success: ->
+                    new shuttledriveWeb.Views.TripOfferListView({collection : tripOfferCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
+                error: ->
+                    alert 'An error has occurt fetching the results of your trip offers'
         else if navigate is 'nav_matches'
             $('.tab-content').html(Handlebars.templates['tripRequestOverviewView']())
 

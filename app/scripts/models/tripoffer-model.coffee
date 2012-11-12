@@ -1,21 +1,16 @@
 class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
     defaults:
-        offerId: ''
-        offerUser: '1'
-        #offerOriginAddress: ''
-        offerOriginLong: ''
-        offerOriginLat: ''
-        offerOriginWindow: 500
-        #offerDestinationAddress: ''
-        offerDestinationLong: ''
-        offerDestinationLat: ''
-        offerDestinationWindow: 500
-        offerStartTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
-        offerStartTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 12:00:00 GMT+01"))
-        offerEndTimeMin: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
-        offerEndTimeMax: shuttledriveWeb.Helpers.TimeHelper.formatUnixTimestamp(new Date("Wed, 07 Nov 2012 13:00:00 GMT+01"))
-        offerNumberOfSeats: 4
-        offerState: ''
+        originLong: ''
+        originLat: ''
+        destinationLong: ''
+        destinationLat: ''
+        startTimeMin: 1352464648
+        startTimeMax: 1352471817
+        endTimeMin: 1352478409
+        endTimeMax: 1352485578
+        numberOfSeats: 1
+        originAddress: ''
+        destinationAddress: ''
 
     validation:
         offerDestinationAddress:
@@ -25,20 +20,19 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
             required: true
             msg: 'Please enter a departure location'
 
-
     urlRoot: ->
         shuttledriveWeb.rootPath + '/trip_offer'
 
     saveWithOriginAndDestination: (origin, destination, callback) ->
         @getLatLong @, origin, (caller, result) ->
-            caller.set 'offerOriginLat': result.Ya
-            caller.set 'offerOriginLong':  result.Za
+            caller.set 'originLat': result.Ya
+            caller.set 'originLong':  result.Za
         @getLatLong @, destination, (caller, result) ->
-            caller.set 'offerDestinationLat': result.Ya
-            caller.set 'offerDestinationLong': result.Za
-            caller.save(caller.toJSON(), 
+            caller.set 'destinationLat': result.Ya
+            caller.set 'destinationLong': result.Za
+            caller.save(caller.toJSON(),
                 success: ->
-                    callback(caller.get('offerId'))
+                    callback(caller.get('id'))
                 error: ->
                     console.log 'error')
 
@@ -50,38 +44,3 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
                 callback(caller, result)
             # else throw error TODO: add throw statement
 
-    parse: (resp, xhr) ->
-        if resp.tripMatches
-            offerId: resp.tripOffer.offerId
-            offerUser: resp.tripOffer.offerUser
-            offerOriginAddress: resp.tripOffer.offerOriginAddress
-            offerOriginLong: resp.tripOffer.offerOriginLong
-            offerOriginLat: resp.tripOffer.offerOriginLat
-            offerOriginWindow: resp.tripOffer.offerOriginWindow
-            offerDestinationAddress: resp.tripOffer.offerDestinationAddress
-            offerDestinationLong: resp.tripOffer.offerDestinationLong
-            offerDestinationLat: resp.tripOffer.offerDestinationLat
-            offerDestinationWindow: resp.tripOffer.offerDestinationWindow
-            offerStartTimeMin: resp.tripOffer.offerStartTimeMin
-            offerStartTimeMax: resp.tripOffer.offerStartTimeMax
-            offerEndTimeMin: resp.tripOffer.offerEndTimeMin
-            offerEndTimeMax: resp.tripOffer.offerEndTimeMax
-            offerNumberOfSeats: resp.tripOffer.offerNumberOfSeats
-            offerState: resp.tripOffer.offerState
-        else
-            offerId: resp.offerId
-            offerUser: resp.offerUser
-            offerOriginAddress: resp.offerOriginAddress
-            offerOriginLong: resp.offerOriginLong
-            offerOriginLat: resp.offerOriginLat
-            offerOriginWindow: resp.offerOriginWindow
-            offerDestinationAddress: resp.offerDestinationAddress
-            offerDestinationLong: resp.offerDestinationLong
-            offerDestinationLat: resp.offerDestinationLat
-            offerDestinationWindow: resp.offerDestinationWindow
-            offerStartTimeMin: resp.offerStartTimeMin
-            offerStartTimeMax: resp.offerStartTimeMax
-            offerEndTimeMin: resp.offerEndTimeMin
-            offerEndTimeMax: resp.offerEndTimeMax
-            offerNumberOfSeats: resp.offerNumberOfSeats
-            offerState: resp.offerState
