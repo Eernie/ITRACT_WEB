@@ -1,9 +1,11 @@
 class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     routes: 
         "triprequest/:id": "tripRequestRoute"
+        "userprofile/:id": "userProfile"
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
         "": "indexRoute"
+
 
     tripRequestRoute: (id) ->
         $('#content').html('') # empty the div each time the route gets called
@@ -19,7 +21,18 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                 $('.user-popover').popover()
             error: (data, error) ->
                 #
-                
+              
+    userProfile: (id) ->
+        $('#content').html('')
+
+        userProfile = new shuttledriveWeb.Models.UserProfileModel({id: id})
+        userProfile.fetch
+            success: (data) ->
+                view = new shuttledriveWeb.Views.UserProfileView({model: data})
+                $(view.render()).appendTo('#content').hide().fadeIn()
+            error: (data, error) ->
+                #
+
     tripOfferRoute: ->
         tripOffer = new shuttledriveWeb.Models.TripOfferModel()
         new shuttledriveWeb.Views.TripOfferView({model:tripOffer})
