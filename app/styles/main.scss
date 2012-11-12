@@ -20,14 +20,19 @@ body {
     margin-right: 10px;
 }
 
-.notificationLink {
-    margin-right:0 !important;
-}
-
-#notifications:hover, .user-popover:hover {
-    cursor:pointer;
-}
-
 .popover {
     width: 300px;
+}
+
+.notification-list-item a {
+    width: 150px;
+}
+
+#notifications-content {
+    z-index: 1000;
+    width: 100px;
+}
+
+.modal-open .dropdown-menu {
+    z-index: 1000;
 }

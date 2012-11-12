@@ -24,15 +24,10 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
             headers:
                 "Authorization": token
             success: (data) ->
-                callback(data.get('userId'))
+                callback(data.get('id'))
             error: ->
                 callback(-1)
         )
-
-
-
-
-
 
     # Loads session information from cookie
     load: ->
@@ -40,7 +35,7 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
         @.set 'access_token' : $.cookie('access_token')
 
         #@overrideSync(@.get('access_token')) if @.get('access_token')?
-
+    ###
     overrideSync: (token) ->
         sync = Backbone.sync
         Backbone.sync = (method, model, options) ->
@@ -48,6 +43,6 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
                 xhr.setRequestHeader "Authorization", token
 
             sync method, model, options
-
+    ###
 
 
