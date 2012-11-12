@@ -10,7 +10,7 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
         @collection.bind 'reset', @update unless @modalActive
         setInterval (=>
           @collection.fetch()
-        ), 100000
+        ), 10000
 
     render: -> 
         $('#nots').html(Handlebars.templates['notificationsView']({'notifications': @collection.toJSON()}))
