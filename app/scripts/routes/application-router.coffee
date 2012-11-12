@@ -4,6 +4,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "triprequest": "indexRoute"
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
+        "tripoffer/:id": "tripOfferDetailRoute"
         "": "indexRoute"
         "login": "loginRoute"
 

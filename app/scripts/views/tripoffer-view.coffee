@@ -22,11 +22,10 @@ class shuttledriveWeb.Views.TripOfferView extends Backbone.View
 
         departureTimeMin = shuttledriveWeb.Helpers.TimeHelper.getDate(timeDeparture)
         arrivalTimeMax = shuttledriveWeb.Helpers.TimeHelper.getDate(timeArrival)
-
         @model.set({destinationAddress: to, originAddress: from, startTimeMin: departureTimeMin, endTimeMax: arrivalTimeMax})
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
             $('#offerAdded').modal()
             $("#offerAdded").on "hidden", ->
-                    shuttledriveWeb.app.navigate 'tripoffer/', {trigger: true}
+                shuttledriveWeb.app.navigate 'tripoverview/', {trigger: true}
         )
