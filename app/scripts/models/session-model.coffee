@@ -26,7 +26,7 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
             success: (data) ->
                 callback(data.get('userId'))
             error: ->
-                console.log 'error'
+                callback(-1)
         )
 
 
