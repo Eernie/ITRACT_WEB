@@ -31,8 +31,8 @@
                     <table class="table table-striped table-hover table-bordered">
                         <tr>
                             <td>Driver</td><td>
-                                <a class="user-popover" rel="popover" data-placement="right" data-content="<div><p>Name: Sjaak Swart</p><p>Age: 29</p><p>Sex: Male</p><p>Rating: 4</p></div><div style='float:right;'><img src='http://static1.robohash.org/sjaak-swart.png'></img></div>" data-original-title="User">
-                                    Sjaak Swart
+                                <a class="user-popover" rel="popover" data-placement="right" data-content="</div><div class='pull-right'><img src='{{tripOffer.user.profilePicture}}'></img></div><div><p>Name: {{tripOffer.user.firstName}} {{tripOffer.user.lastName}}</p><p>Date of birth: {{tripOffer.user.dateOfBirth}}</p><p>Gender: {{tripOffer.user.gender}}</p><p>Rating: 4</p>" data-original-title="User">
+                                    {{tripOffer.user.firstName}} {{tripOffer.user.lastName}}
                                 </a>
                             </td>
                         </tr>

@@ -4,7 +4,7 @@ window.shuttledriveWeb =
     Views: {}
     Routers: {}
     Helpers: {}
-    rootPath: 'http://localhost:9000'
+    rootPath: '/api'
     init: ->
         new shuttledriveWeb.Views.MenuView()
         shuttledriveWeb.app = new shuttledriveWeb.Routers.ApplicationRouter()
