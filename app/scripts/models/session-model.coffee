@@ -12,6 +12,7 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
 
     urlRoot: ->
         shuttledriveWeb.rootPath + '/login'
+        shuttledriveWeb.rootPath + '/login'
 
     # Saves session information to cookie
     saveCookie: (id, access_token) ->
@@ -20,14 +21,17 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
 
 
     authUser: (token, callback) ->
-
-        @save(@toJSON(),
-            success: ->
-                callback(@get('userId'))
+        @fetch(
+            headers:
+                "Authorization": token
+            success: (data) ->
+                callback(data.get('id'))
             error: ->
                 console.log 'error'
-                callback('2')
         )
+
+
+
 
 
 
@@ -36,12 +40,15 @@ class shuttledriveWeb.Models.Session extends Backbone.Model
         @.set 'user_id' : $.cookie('user_id')
         @.set 'access_token' : $.cookie('access_token')
 
-        @overrideSync() if @.get('access_token')?
+        #@overrideSync(@.get('access_token')) if @.get('access_token')?
 
-    overrideSync: ->
+    overrideSync: (token) ->
         sync = Backbone.sync
         Backbone.sync = (method, model, options) ->
             options.beforeSend = (xhr) ->
-                xhr.setRequestHeader "Authorization", @access_token
+                xhr.setRequestHeader "Authorization", token
 
             sync method, model, options
+
+
+

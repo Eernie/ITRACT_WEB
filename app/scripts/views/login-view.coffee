@@ -15,7 +15,7 @@ class shuttledriveWeb.Views.LoginView extends Backbone.View
     createOnSubmit: ->
         user = $('#username').val()
         password = $('#password').val()
-        token = shuttledriveWeb.Helpers.EncodingHelper.toBase64(user+password)
+        token = "Basic "+shuttledriveWeb.Helpers.EncodingHelper.toBase64(user+":"+password)
         session = new shuttledriveWeb.Models.Session()
         session.authUser(token, (id) ->
             session.saveCookie(id, token)
