@@ -31,7 +31,7 @@ class shuttledriveWeb.Views.RegisterView extends Backbone.View
             token = "Basic "+shuttledriveWeb.Helpers.EncodingHelper.toBase64(email+":"+password)
             session = new shuttledriveWeb.Models.Session()
             session.saveCookie(id, token)
-            shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
+            shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
         )
 
 

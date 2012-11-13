@@ -1,9 +1,9 @@
 class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     routes: 
-        "triprequest/:id": "tripRequestRoute"
+        "triprequest/:id": "tripRequestRouteWithId"
         "userprofile/:id": "userProfile"
         "tripoffer/:id": "tripOfferDetailRoute"
-        "triprequest": "indexRoute"
+        "triprequest": "tripRequestRoute"
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
         "tripoverview": "tripOverviewRoute"
@@ -13,7 +13,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "": "indexRoute"
 
 
-    tripRequestRoute: (id) ->
+    tripRequestRouteWithId: (id) ->
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             $('#content').html('') # empty the div each time the route gets called
@@ -66,12 +66,15 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             shuttledriveWeb.menu.render()
-            tripRequest = new shuttledriveWeb.Models.TripRequestModel()
-            new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
+            shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
-
+    tripRequestRoute: ->
+        session = new shuttledriveWeb.Models.Session()
+        if session.authenticated()
+            tripRequest = new shuttledriveWeb.Models.TripRequestModel()
+            new shuttledriveWeb.Views.TripRequestFormView({model:tripRequest})
     tripOverviewRoute: ->
         new shuttledriveWeb.Views.TripOverviewView()
 
