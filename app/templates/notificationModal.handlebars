@@ -1,9 +1,87 @@
-<div id="notification-{{id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="notification-{{id}}" aria-hidden="true">
+<div id="notification-{{notification.id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="notification-{{notification.id}}" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>{{notification.message}}</h4>
+    </div>
     <div class="modal-body">
-        {{message}}
+        <div class="span2">
+            <img height="100" width="100" class="img-polaroid" src='{{matchedTrip.user.profilePicture}}'></img>
+            <div class="pull-left">
+                <strong>
+                    {{matchedTrip.user.firstName}} {{matchedTrip.user.lastName}}
+                </strong>
+                ({{matchedTrip.user.gender}})
+                <Br>
+                {{matchedTrip.user.dateOfBirth}}
+                <br>
+                <table>
+                    <tr><td width="40px">
+                        <div id="thumbUp" class="clickOnUp">
+                            <img class="thumbsUpDown" id="thumbUp" src="../images/thumb-up.png"></img>
+                            <small id="thumbUpValue">
+                                {{#if matchedTrip.user.positive}}
+                                    {{matchedTrip.user.positive}}
+                                {{else}}
+                                    0   <!-- {{matchedTrip.user.thumbUp}} -->
+                                {{/if}}
+                            </small>
+                        </div>  
+                    </td><td>
+                        <div id="thumbDown" class="clickOnDown">
+                            <img class="thumbsUpDown" id="thumbsDown" src="../images/thumb-down.png"></img>
+                            <small id="thumbDownValue">
+                                {{#if matchedTrip.user.negative}}
+                                    {{matchedTrip.user.negative}}
+                                {{else}}
+                                    0   <!-- {{matchedTrip.user.thumbDown}} -->
+                                {{/if}}
+                            </small>
+                        </div>
+                    
+                    </td></tr>
+                </table> 
+            </div>
+        </div>
+        <div class="span5">
+            <table class="table table-striped table-hover table-bordered table-condensed">
+                <tr>
+                    <th>
+                    </th>
+                    <th>
+                        {{matchedTrip.user.firstName}} {{matchedTrip.user.lastName}}
+                    </th>
+                    <th>
+                        You
+                    </th>
+                </tr>
+                <tr>
+                    <td>From</td>
+                    <td><span class="badge badge-important">A</span> {{capitalize matchedTrip.originAddress}}</p></td>
+                    <td><span class="badge badge-info">C</span> {{capitalize userTrip.originAddress}}</p></td>
+                </tr>
+                <tr>
+                    <td>To</td>
+                    <td><span class="badge badge-important">B</span> {{capitalize matchedTrip.destinationAddress}}</p></td>
+                    <td><span class="badge badge-info">D</span> {{capitalize userTrip.destinationAddress}}</p></td>
+                </tr>
+                <tr>
+                    <td>Departure time</td>
+                    <td>{{dateFormatTimeOnly matchedTrip.startTimeMin}}</td>
+                    <td>{{dateFormatTimeOnly userTrip.startTimeMin}}</td>
+                </tr>
+                <tr>
+                    <td>Arrival time</td>
+                    <td>{{dateFormatTimeOnly matchedTrip.endTimeMin}}</td>
+                    <td>{{dateFormatTimeOnly userTrip.endTimeMin}}</td>
+                </tr>
+            </table>
+        </div>
+        <img src="http://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{{matchedTrip.originLat}}, {{matchedTrip.originLong}}&markers=color:Red%7Clabel:B%7C{{matchedTrip.destinationLat}}, {{matchedTrip.destinationLong}}&
+markers=color:Red%7Clabel:C%7C{{{userTrip.originLat}}, {{userTrip.originLong}}&markers=color:Red%7Clabel:D%7C{{userTrip.destinationLat}}, {{userTrip.destinationLong}}&sensor=false">
+    </img>
     </div>
     <div class="modal-footer">
-        {{#if serverNeedsResponse}}
+        {{#if notification.serverNeedsResponse}}
             <button class="btn btn-danger" id="decline-notification" data-dismiss="modal" aria-hidden="true">Deny</button>
             <button class="btn btn-success" id="accept-notification" data-dismiss="modal" class="confirm">Confirm</button>
         {{else}}

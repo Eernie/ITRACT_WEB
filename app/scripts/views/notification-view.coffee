@@ -25,13 +25,32 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
         id = $(e.currentTarget).data('id')
         # get that notification from the collection
         notification = @collection.get(id)
-        console.log notification
+
+        userId = new shuttledriveWeb.Models.Session().get 'user_id'
+        tripMatch = new shuttledriveWeb.Models.TripMatchModel(notification.get 'tripMatch')
+        tripOffer = new shuttledriveWeb.Models.TripOfferModel(tripMatch.get 'tripOffer')
+        tripRequest = new shuttledriveWeb.Models.TripRequestModel(tripMatch.get 'tripRequest')
+        if +userId is +tripOffer.toJSON().user.id
+            matchedTrip = tripRequest
+            userTrip = tripOffer
+        else
+            matchedTrip = tripOffer
+            userTrip = tripReqeust
+        context = {
+            #user : new shuttledriveWeb.Models.UserModel({ id : userId})
+            userTrip : userTrip.toJSON()
+            notification : notification.toJSON()
+            matchedTrip : matchedTrip.toJSON()
+        }
+        console.log context
         # create a modal for it and store it in a div temporarily
-        $('#modals').append(Handlebars.templates['notificationModal'](notification.toJSON()))
+        $('#modals').append(Handlebars.templates['notificationModal'](context))
         # jquery selector for the newly created modal
         notificationModal = $('.notification-' + id)
         # show the modal
         notificationModal.modal('show')
+        $(".modal").css("width", "600px")
+        $(".modal").css("margin", "-270px 0 0 -300px")
         # when clicking either of the buttons in the modal fade out the backdrop 
         # and remove the modal from the container that we stored it in
         $('#accept-notification').click =>
@@ -51,3 +70,4 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
             notification.destroy()
             $('.modal-backdrop').fadeOut ->
                 $('#modals').html('')
+

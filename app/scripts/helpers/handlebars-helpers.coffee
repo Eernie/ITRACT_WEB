@@ -26,7 +26,11 @@ Handlebars.registerHelper "dateFormatTime", (context) ->
   date = new Date(context*1000)
   date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
 
-
+###
+Capitalize input
+###
+Handlebars.registerHelper "capitalize", (context)->
+    context.charAt(0).toUpperCase() + context.slice(1);
 
 ###
 
