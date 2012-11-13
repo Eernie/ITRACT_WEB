@@ -8,9 +8,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "tripoffer": "tripOfferRoute"
         "login": "loginRoute"
         "": "indexRoute"
-        
-
-
 
     tripRequestRoute: (id) ->
         session = new shuttledriveWeb.Models.Session()
@@ -18,8 +15,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
             $('#content').html('') # empty the div each time the route gets called
             tripRequest = new shuttledriveWeb.Models.TripRequestModel({id: id})
             tripRequest.fetch(
-                #headers:
-                #    "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
+                headers:
+                    "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                 success: (data) ->
                     console.log data
 
@@ -35,7 +32,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
-	userProfile: (id) ->
+    userProfile: (id) ->
         $('#content').html('')
 
         userProfile = new shuttledriveWeb.Models.UserProfileModel({id: id})
@@ -53,6 +50,10 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
             new shuttledriveWeb.Views.TripOfferView({model:tripOffer})
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
+    
+    loginRoute: ->
+        new shuttledriveWeb.Views.LoginView()
+
 
     indexRoute: ->
         session = new shuttledriveWeb.Models.Session()
@@ -63,7 +64,5 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
-    loginRoute: ->
-        new shuttledriveWeb.Views.LoginView()
-
+    
 
