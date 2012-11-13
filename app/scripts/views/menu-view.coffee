@@ -5,11 +5,13 @@ class shuttledriveWeb.Views.MenuView extends Backbone.View
     initialize: ->
         @render()
 
-    render: ->      
-        $(@el).html(Handlebars.templates['menuView']({}))
+    render: ->    
         session = new shuttledriveWeb.Models.Session()
-        # only display notifications when logged in
         if session.authenticated()
+            loggedIn = true
+        $(@el).html(Handlebars.templates['menuView']({'loggedIn': loggedIn}))
+        # only display notifications when logged in
+        if loggedIn
             @notification = new shuttledriveWeb.Views.NotificationView({collection: new shuttledriveWeb.Collections.NotificationCollection()})
 
     logout: ->
