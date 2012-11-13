@@ -42,4 +42,8 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 callback(caller, result)
             # else throw error TODO: add throw statement
 
+    sync: (method, model, options)->
+            options.headers = "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
+            Backbone.sync(method, model, options)
+
 
