@@ -5,8 +5,7 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         destinationLong: ''
         destinationLat: ''
         numberOfSeats: 1
-        originAddress: ''
-        destinationAddress: ''
+
 
     validation:
         destinationAddress:
