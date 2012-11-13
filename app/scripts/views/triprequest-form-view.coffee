@@ -23,9 +23,9 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
         departureRadio = $('#departure-time').attr('checked')
 
         if arrivalRadio is 'checked'
-            @model.set({originAddress: from, destinationAddress: to, endTimeMax: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
+            @model.set({originAddress: from, destinationAddress: to,endTimeMax:shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),  endTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
         else if departureRadio is 'checked'
-            @model.set({originAddress: from, destinationAddress: to, startTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
+            @model.set({originAddress: from, destinationAddress: to,startTimeMax: shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),startTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
         else
             @model.set({originAddress: from, destinationAddress: to})
 

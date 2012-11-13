@@ -21,19 +21,22 @@
                 </div>
                 <div class="span3">
                     <div class="control-group">
-                        <label class="control-label" for="time">Departure Time</label>
+                        <label class="control-label" for="time">Time</label>
                         <div class="input-append bootstrap-timepicker-component">
-                            <input type="text" name="time" id="offer-departure-time" readonly="readonly" class="input-small timepicker-default">
+                            <input type="text" name="time" id="time" readonly="readonly" class="input-small timepicker-default">
                             <span class="add-on">
                                 <i class="icon-time"></i>
                             </span>
                         </div>
-                        <label class="control-label" for="time">Arrival Time</label>
-                        <div class="input-append bootstrap-timepicker-component">
-                            <input type="text" name="time" id="offer-arrival-time" readonly="readonly" class="input-small timepicker-default">
-                            <span class="add-on">
-                                <i class="icon-time"></i>
-                            </span>
+                        <div class="form-inline">
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios" id="departure-time" value="departure-time" checked>
+                                Departure
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios" id="arrival-time" value="arrival-time">
+                                Arrival
+                            </label>
                         </div>
                     </div>
                 </div>
