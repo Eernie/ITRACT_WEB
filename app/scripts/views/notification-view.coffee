@@ -49,8 +49,8 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
         notificationModal = $('.notification-' + id)
         # show the modal
         notificationModal.modal('show')
-        $(".modal").css("width", "600px")
-        $(".modal").css("margin", "-270px 0 0 -300px")
+        $(".modal").css("width", "650px")
+        $(".modal").css("margin", "-295px 0 0 -325px")
         # when clicking either of the buttons in the modal fade out the backdrop 
         # and remove the modal from the container that we stored it in
         $('#accept-notification').click =>
