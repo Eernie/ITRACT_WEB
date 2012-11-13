@@ -39,6 +39,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
 
         userProfile = new shuttledriveWeb.Models.UserProfileModel({id: id})
         userProfile.fetch
+            headers:
+                "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
             success: (data) ->
                 view = new shuttledriveWeb.Views.UserProfileView({model: data})
                 $(view.render()).appendTo('#content').hide().fadeIn()
