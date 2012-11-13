@@ -92,6 +92,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         shuttledriveWeb.app.navigate 'login', {trigger: true}
 
     registerRoute: ->
-        newuser = new shuttledriveWeb.Models.NewUserModel()
+        newuser = new shuttledriveWeb.Models.UserModel()
         new shuttledriveWeb.Views.RegisterView({model: newuser})
 

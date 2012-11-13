@@ -1,4 +1,4 @@
-class shuttledriveWeb.Models.NewUserModel extends Backbone.Model
+class shuttledriveWeb.Models.UserModel extends Backbone.Model
     ###
     firstName
     middleName
@@ -33,6 +33,9 @@ class shuttledriveWeb.Models.NewUserModel extends Backbone.Model
             required: true
             pattern: 'email'
             msg: 'Please enter a correct email address'
+        profilePicture:
+            required: true
+            msg: 'Please upload a profile picture'
 
 
 
@@ -40,7 +43,7 @@ class shuttledriveWeb.Models.NewUserModel extends Backbone.Model
         if @isValid()
             @save(@.toJSON(),
                 success: (data) ->
-                    callback(data.get('id'))
+                    callback(data.get('id'), data.get('firstName')+" "+data.get('lastName'), data.get('profilePicture'))
                 error: ->
                     console.log 'error'
             )

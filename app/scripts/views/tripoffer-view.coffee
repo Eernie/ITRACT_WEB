@@ -29,7 +29,5 @@ class shuttledriveWeb.Views.TripOfferView extends Backbone.View
             @model.set({id: null, originAddress: from, destinationAddress: to})
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
-            $('#offerAdded').modal()
-            $("#offerAdded").on "hidden", ->
-                shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
+            shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
         )

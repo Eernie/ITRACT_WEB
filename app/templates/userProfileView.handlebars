@@ -13,8 +13,8 @@
                 <div id="thumbUp" class="clickOnUp">
                     <img class="thumbsUpDown" id="thumbUp" src="../images/thumb-up.png"></img>
                     <small id="thumbUpValue">
-                        {{#if user.thumbUp}}
-                            {{user.thumbUp}}
+                        {{#if user.positive}}
+                            {{user.positive}}
                         {{else}}
                             0   <!-- {{user.thumbUp}} -->
                         {{/if}}
@@ -24,8 +24,8 @@
                 <div id="thumbDown" class="clickOnDown">
                     <img class="thumbsUpDown" id="thumbsDown" src="../images/thumb-down.png"></img>
                     <small id="thumbDownValue">
-                        {{#if user.thumbDown}}
-                            {{user.thumbDown}}
+                        {{#if user.negative}}
+                            {{user.negative}}
                         {{else}}
                             0   <!-- {{user.thumbDown}} -->
                         {{/if}}

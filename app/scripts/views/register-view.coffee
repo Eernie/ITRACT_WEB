@@ -24,14 +24,25 @@ class shuttledriveWeb.Views.RegisterView extends Backbone.View
         postalCode = $('#postalCode').val()
         dateOfBirth = $('#dateOfBirth').val()
         gender = $('#city').val()
+        profilePicture = $('#profilePicture').val()
 
-        @model.set({telephoneNr: telephoneNr, address: address, postalCode: postalCode, dateOfBirth: dateOfBirth, gender:gender, firstName:firstname, lastName: lastname, password:password, email:email, profilePicture: 'http://2.gravatar.com/avatar/0dff0f9ef3d64ea9bc03a755661886c9?size=420'})
-        console.log(@model.isValid())
-        @model.createUser((id) ->
+        @model.set({ 
+            telephoneNr: telephoneNr, 
+            address: address, 
+            postalCode: postalCode, 
+            dateOfBirth: dateOfBirth, 
+            gender:gender, 
+            firstName:firstname, 
+            lastName: lastname, 
+            password:password, 
+            email:email, 
+            profilePicture: profilePicture
+            })
+        @model.createUser((id, username, profilePicture) ->
             token = "Basic "+shuttledriveWeb.Helpers.EncodingHelper.toBase64(email+":"+password)
             session = new shuttledriveWeb.Models.Session()
-            session.saveCookie(id, token)
-            shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
+            session.saveCookie(id, token, profilePicture, username)
+            shuttledriveWeb.app.navigate '', {trigger: true}
         )
 
 
