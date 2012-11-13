@@ -22,7 +22,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
 
                     view = new shuttledriveWeb.Views.TripRequestView({model: data})
                     $(view.render()).appendTo('#content').hide().fadeIn()
-                    matchView = new shuttledriveWeb.Views.MatchView({model: data.get('matches')})
+                    matchCollection = new shuttledriveWeb.Collections.MatchCollection data.get('matches')
+                    matchView = new shuttledriveWeb.Views.MatchView({collection: matchCollection})
                     $(matchView.render()).appendTo('#content').hide().fadeIn()
                     $('.user-popover').popover()
                 error: (data, error) ->
@@ -58,7 +59,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     indexRoute: ->
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
-            console.log("is authenticated")
+            shuttledriveWeb.menu.render()
             tripRequest = new shuttledriveWeb.Models.TripRequestModel()
             new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
         else
