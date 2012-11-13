@@ -1,17 +1,64 @@
 <div class="row-fluid show-grid">
-  <div class="span4"></div>
-  <div class="span4 well">
-      <h3>Login</h3>
-      <div class="control-group">
-          <label class="control-label" for="username">Username</label>
-          <div class="controls">
-              <input type="text" name="username" id="username" placeholder="Enter your username" >
+  <div class="span12 well">
+      <h3>Register</h3>
+      <p>Fields with an asterisk are required</p>
+      <p id="error" class="error"></p>
+      <div class="span4">
+          <div class="control-group">
+
+              <label class="control-label" for="firstname">* First name</label>
+              <div class="controls">
+                  <input type="text" name="firstName" data-error-style="tooltip" id="firstName" placeholder="Enter your first name" >
+              </div>
+              <label class="control-label" for="lastname">* Last name</label>
+              <div class="controls">
+                  <input type="text" name="lastName" data-error-style="tooltip" id="lastName" placeholder="Enter your last name" >
+              </div>
+              <label class="control-label" for="email">* Email address</label>
+                <div class="controls">
+                    <input type="text" name="email" data-error-style="tooltip" id="email" placeholder="Enter your email address" >
+                </div>
+              <label class="control-label" for="password">* Password</label>
+              <div class="controls">
+                  <input type="password" name="password" data-error-style="tooltip" id="password" placeholder="Enter your password">
+              </div>
+              <label class="control-label" for="gender">Gender (M/V)</label>
+                  <div class="controls">
+                      <input type="text" name="gender" data-error-style="tooltip" id="gender" placeholder="Enter your gender (M/V)" >
+                  </div>
           </div>
-          <label class="control-label" for="password">Password</label>
-          <div class="controls">
-              <input type="text" name="password" id="password" placeholder="Enter your password">
+        </div>
+      <div class="span2"></div>
+      <div class="span4">
+          <div class="control-group">
+              <label class="control-label" for="telephoneNr">Telephone number</label>
+                <div class="controls">
+                    <input type="text" name="telephoneNr" data-error-style="tooltip" id="telephoneNr" placeholder="Enter your telephone number" >
+                </div>
+              <label class="control-label" for="address">Address</label>
+                <div class="controls">
+                    <input type="text" name="address" data-error-style="tooltip" id="address" placeholder="Enter your address" >
+                </div>
+              <label class="control-label" for="postalCode">Postal code</label>
+                <div class="controls">
+                    <input type="text" name="postalCode" data-error-style="tooltip" id="postalCode" placeholder="Enter your postal code" >
+                </div>
+              <label class="control-label" for="city">City</label>
+                <div class="controls">
+                    <input type="text" name="city" data-error-style="tooltip" id="city" placeholder="Enter your city" >
+                </div>
+              <label class="control-label" for="dateOfBirth">Date of birth</label>
+                <div class="controls">
+                    <input type="text" name="dateOfBirth" data-error-style="tooltip" id="dateOfBirth" placeholder="Enter your date of birth (YYYY/MM/DD)" >
+                </div>
+
           </div>
-          <button type="submit" class="btn btn-primary" id="login-submit">Submit</button>
-      </div>
-  <div class="span4"></div>
+       </div>
+
+       <div class="control-group pull-bottom">
+
+              <button type="submit" class="btn btn-primary" id="register-submit">Submit</button>
+
+        </div>
+
  </div>

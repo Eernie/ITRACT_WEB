@@ -9,7 +9,10 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
         @render()
         @collection.bind 'reset', @update unless @modalActive
         setInterval (=>
-          @collection.fetch()
+          @collection.fetch(
+              headers:
+                  "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
+          )
         ), 10000
 
     render: -> 

@@ -7,6 +7,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "tripoffer/:id": "tripOfferDetailRoute"
         "login": "loginRoute"
         "logout": "logoutRoute"
+        "register": "registerRoute"
         "": "indexRoute"
 
 
@@ -59,3 +60,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         new shuttledriveWeb.Models.Session().deleteCookie()
         shuttledriveWeb.app.navigate 'login', {trigger: true}
 
+    registerRoute: ->
+        newuser = new shuttledriveWeb.Models.NewUserModel()
+        new shuttledriveWeb.Views.RegisterView({model: newuser})
