@@ -6,11 +6,12 @@ window.shuttledriveWeb =
     Helpers: {}
     init: ->
         shuttledriveWeb.rootPath = @getRootPath()
-        new shuttledriveWeb.Views.MenuView()
+        shuttledriveWeb.menu = new shuttledriveWeb.Views.MenuView()
         console.log 'main'
         shuttledriveWeb.app = new shuttledriveWeb.Routers.ApplicationRouter()
         Backbone.history.start()
 
+    # determine the correct rootPath, in development we're hosting the API on localhost
     getRootPath: ->
         console.log document.location.hostname
         if document.location.hostname is not 'localhost:3501'
