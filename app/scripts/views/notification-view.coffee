@@ -34,19 +34,19 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
         notificationModal.modal('show')
         # when clicking either of the buttons in the modal fade out the backdrop 
         # and remove the modal from the container that we stored it in
-        $('#accept-notification').click ->
+        $('#accept-notification').click =>
             notification.updateStatusAccept()
             @collection.remove(notification.get('id'))
             notification.destroy()
             $('.modal-backdrop').fadeOut ->
                 $('#modals').html('')
-         $('#decline-notification').click ->
+         $('#decline-notification').click =>
             notification.updateStatusDecline()
             @collection.remove(notification.get('id'))
             notification.destroy()
             $('.modal-backdrop').fadeOut ->
                 $('#modals').html('')
-        $('#dismiss-notification').click ->
+        $('#dismiss-notification').click =>
             @collection.remove(notification.get('id'))
             notification.destroy()
             $('.modal-backdrop').fadeOut ->

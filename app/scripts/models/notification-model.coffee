@@ -21,4 +21,8 @@ class shuttledriveWeb.Models.NotificationModel extends Backbone.Model
         match.save()
         # send stuff to server
 
-    
+    # override sync to include the authorization headers
+    sync: (method, model, options)->
+            options.headers = "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
+            Backbone.sync(method, model, options)
+
