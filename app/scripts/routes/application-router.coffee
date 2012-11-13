@@ -5,8 +5,10 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
         "tripoffer/:id": "tripOfferDetailRoute"
-        "": "indexRoute"
         "login": "loginRoute"
+        "logout": "logoutRoute"
+        "": "indexRoute"
+
 
 
 
@@ -53,4 +55,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     loginRoute: ->
         new shuttledriveWeb.Views.LoginView()
 
+    logoutRoute: ->
+        new shuttledriveWeb.Models.Session().deleteCookie()
+        shuttledriveWeb.app.navigate 'login', {trigger: true}
 
