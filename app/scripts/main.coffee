@@ -4,11 +4,13 @@ window.shuttledriveWeb =
     Views: {}
     Routers: {}
     Helpers: {}
-    rootPath: 'http://localhost:9000/api'
+    rootPath: '/api'
     init: ->
         new shuttledriveWeb.Views.MenuView()
+        console.log 'main'
         shuttledriveWeb.app = new shuttledriveWeb.Routers.ApplicationRouter()
         Backbone.history.start()
     
 $(document).ready ->
     shuttledriveWeb.init()
+
