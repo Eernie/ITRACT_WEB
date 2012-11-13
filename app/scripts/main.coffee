@@ -14,7 +14,7 @@ window.shuttledriveWeb =
     # determine the correct rootPath, in development we're hosting the API on localhost
     getRootPath: ->
         console.log document.location.hostname
-        if document.location.hostname is not 'localhost:3501'
+        if document.location.hostname isnt 'localhost'
             return '/api'
         else
             return 'http://localhost:9000/api'
