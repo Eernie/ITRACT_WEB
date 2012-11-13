@@ -10,7 +10,7 @@ class shuttledriveWeb.Views.TripOfferView extends Backbone.View
 
     render: ->
         context = {}
-        Backbone.Validation.bind this
+        Backbone.Validation.bind @
         $(@el).html(Handlebars.templates['tripOfferView'](context))
         $('.timepicker-default').timepicker({showMeridian: false, showSeconds: false, minuteStep: 5})
 
@@ -22,14 +22,14 @@ class shuttledriveWeb.Views.TripOfferView extends Backbone.View
         departureRadio = $('#departure-time').attr('checked')
 
         if arrivalRadio is 'checked'
-            @model.set({originAddress: from, destinationAddress: to,endTimeMax:shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),  endTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
+            @model.set({id: null, originAddress: from, destinationAddress: to,endTimeMax:shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),  endTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
         else if departureRadio is 'checked'
-            @model.set({originAddress: from, destinationAddress: to,startTimeMax: shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),startTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
+            @model.set({id: null, originAddress: from, destinationAddress: to,startTimeMax: shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),startTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
         else
-            @model.set({originAddress: from, destinationAddress: to})
+            @model.set({id: null, originAddress: from, destinationAddress: to})
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
             $('#offerAdded').modal()
             $("#offerAdded").on "hidden", ->
-                shuttledriveWeb.app.navigate 'tripoverview/', {trigger: true}
+                shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
         )

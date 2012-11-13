@@ -27,8 +27,6 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 caller.set 'destinationLat': result.Ya
                 caller.set 'destinationLong': result.Za
                 caller.save(caller.toJSON(),
-                    headers:
-                        "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                     success: ->
                         callback(caller.get('id'))
                     error: ->
