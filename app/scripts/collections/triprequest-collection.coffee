@@ -2,6 +2,5 @@ class shuttledriveWeb.Collections.TripRequestCollection extends Backbone.Collect
     model: shuttledriveWeb.Models.TripRequestModel
 
     url: ->
-        #id = new shuttledriveWeb.Models.Session().get 'user_id'
-        id = 1
+        id = new shuttledriveWeb.Models.Session().get 'user_id'
         shuttledriveWeb.rootPath + '/user/' + id + '/trip_requests'
