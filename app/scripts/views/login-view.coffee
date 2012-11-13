@@ -24,7 +24,7 @@ class shuttledriveWeb.Views.LoginView extends Backbone.View
             else
                 session.saveCookie(id, token)
                 session = new shuttledriveWeb.Models.Session()
-                shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
+                shuttledriveWeb.app.navigate '', {trigger: true}
         )
 
     showError: ->
