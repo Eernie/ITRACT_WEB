@@ -33,7 +33,7 @@ Handlebars.registerHelper "dateFormatTime", (context) ->
 ###
 Handlebars.registerHelper "dateFormatTimeOnly", (context)->
   date = new Date(context*1000)
-  date.getHours() + ":" + date.getMinutes()
+  ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2)
 
 ###
 Duration Format

@@ -1,0 +1,31 @@
+<div class="span3">
+    <h4 class="pull-left">Trip request #{{tripRequest.id}}</h4><a class="pull-right request-detail" href="#triprequest/{{tripRequest.id}}">[Detail]</a>
+</div>
+<p>
+    <table class="table table-striped table-hover table-bordered">
+        <tr>
+            <td>Driver</td><td>
+                <a class="user-popover" rel="popover" data-placement="right" data-content="</div><div class='pull-right'><img src='{{tripRequest.user.profilePicture}}'></img></div><div><p>Name: {{tripRequest.user.firstName}} {{tripRequest.user.lastName}}</p><p>Date of birth: {{tripRequest.user.dateOfBirth}}</p><p>Gender: {{tripRequest.user.gender}}</p><p>Rating: 4</p>" data-original-title="User">
+                    {{tripRequest.user.firstName}} {{tripRequest.user.lastName}}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>From</td>
+            <td>{{tripRequest.originAddress}} <span class="badge badge-important">A</span></p></td>
+        </tr>
+        <tr>
+            <td>To</td>
+            <td>{{tripRequest.destinationAddress}} <span class="badge badge-important">B</span></p></td>
+        </tr>
+        <tr>
+            <td>Departure time</td>
+            <td>{{dateFormatTimeOnly tripRequest.startTimeMin}}</td>
+        </tr>
+        <tr>
+            <td>Arrival time</td>
+            <td>{{dateFormatTimeOnly tripRequest.endTimeMin}}</td>
+        </tr>
+    </table>
+</p>
+<img src="http://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&markers=color:Red%7Clabel:A%7C{{{tripRequest.originLat}}, {{tripRequest.originLong}}&markers=color:Red%7Clabel:B%7C{{tripRequest.destinationLat}}, {{tripRequest.destinationLong}}&sensor=false"></img>

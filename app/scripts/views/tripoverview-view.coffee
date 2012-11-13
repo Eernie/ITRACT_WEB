@@ -15,25 +15,30 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
     render: ->
         context = {}
         $(@el).html(Handlebars.templates['tripOverviewView'](context))
+        @showRequestsList()
 
     navigate: (e) ->
         navigate = $(e.target).parent().attr 'id'
         if navigate is 'nav_requests'
-            tripRequestCollection = new shuttledriveWeb.Collections.TripRequestCollection()
-            tripRequestCollection.fetch
-                success: ->
-                    new shuttledriveWeb.Views.TripRequestListView({collection : tripRequestCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
-                error: ->
-                    alert 'An error has occurt fetching the results of your trip requests'
+            @showRequestsList()
         else if navigate is 'nav_offers'
-            tripOfferCollection = new shuttledriveWeb.Collections.TripOfferCollection()
-            tripOfferCollection.fetch
-                success: ->
-                    new shuttledriveWeb.Views.TripOfferListView({collection : tripOfferCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
-                error: ->
-                    alert 'An error has occurt fetching the results of your trip offers'
-        else if navigate is 'nav_matches'
-            $('.tab-content').html(Handlebars.templates['tripRequestOverviewView']())
+            @showOffersList()
+
+    showRequestsList: ->
+        tripRequestCollection = new shuttledriveWeb.Collections.TripRequestCollection()
+        tripRequestCollection.fetch
+            success: ->
+                new shuttledriveWeb.Views.TripRequestListView({collection : tripRequestCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
+            error: ->
+                alert 'An error has occurred fetching the results of your trip requests'
+
+    showOffersList: ->
+        tripOfferCollection = new shuttledriveWeb.Collections.TripOfferCollection()
+        tripOfferCollection.fetch
+            success: ->
+                new shuttledriveWeb.Views.TripOfferListView({collection : tripOfferCollection, template : 'tripOfferOverviewView', el: $ '#middle-tab-content'})
+            error: ->
+                alert 'An error has occurred fetching the results of your trip offers'
 
     requestDetail: (e) ->
         console.log $(e.target).parent().attr 'id'
