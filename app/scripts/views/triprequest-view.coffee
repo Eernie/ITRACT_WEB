@@ -8,4 +8,5 @@ class shuttledriveWeb.Views.TripRequestView extends Backbone.View
 
     render: ->
         $(@el).html(Handlebars.templates['triprequestView'](@model.toJSON()))
+            
         

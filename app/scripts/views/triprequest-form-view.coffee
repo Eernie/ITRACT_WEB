@@ -6,6 +6,7 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
         "click #trip-request-submit": "createOnSubmit"
 
     initialize: ->
+        @getLocation()
         _.bindAll @
         @render()
 
@@ -31,6 +32,22 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
 
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
-            shuttledriveWeb.app.navigate 'triprequest/'+id, {trigger: true}
+            shuttledriveWeb.app.navigate 'triprequest/' + id, {trigger: true}
         )
 
+    getLocation: ->
+        if(navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(@showPosition)
+        else
+            error 'Geolocation is not supported'
+    
+    showPosition: (position)->
+        valueLat = position.coords.latitude 
+        valueLong = position.coords.longitude
+                
+        point = new google.maps.LatLng(valueLat, valueLong)
+        geocoder = new google.maps.Geocoder()
+        geocoder.geocode
+            latLng: point
+        , (results, status) ->
+            $('#from').attr("value", results[0].formatted_address)

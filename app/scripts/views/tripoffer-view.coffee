@@ -1,13 +1,32 @@
 class shuttledriveWeb.Views.TripOfferView extends Backbone.View
     el: $ '#content'
+    tagName : "input"
 
     events:
         "click #trip-offer-submit": "createOnSubmit"
 
     initialize: ->
+        @getLocation()
         _.bindAll @
         @render()
 
+    getLocation: ->
+        if(navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(@showPosition)
+        else
+            error 'Geolocation is not supported'
+    
+    showPosition: (position)->
+        valueLat = position.coords.latitude 
+        valueLong = position.coords.longitude
+                
+        point = new google.maps.LatLng(valueLat, valueLong)
+        geocoder = new google.maps.Geocoder()
+        geocoder.geocode
+            latLng: point
+        , (results, status) ->
+            $('#from').attr("value", results[0].formatted_address)
+            
     render: ->
         context = {}
         Backbone.Validation.bind @
