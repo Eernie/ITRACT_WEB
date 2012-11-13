@@ -66,4 +66,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
     tripOverviewRoute: ->
-        new shuttledriveWeb.Views.TripOverviewView()
+        session = new shuttledriveWeb.Models.Session()
+        if session.authenticated()
+            new shuttledriveWeb.Views.TripOverviewView()
+        else
+            shuttledriveWeb.app.navigate 'login', {trigger: true}
