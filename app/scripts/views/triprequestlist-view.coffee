@@ -8,10 +8,6 @@ class shuttledriveWeb.Views.TripRequestListView extends Backbone.View
         @render()
 
     render: ->
-        console.log @test
-        if @test is undefined
-            @test = 'hallo'
-        console.log 'after: ' + @test
         tripRequestCollection = @options.collection
         template = @options.template
         context = {tripRequestCollection: tripRequestCollection.toJSON()}

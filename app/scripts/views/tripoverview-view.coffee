@@ -29,16 +29,16 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
         tripRequestCollection.fetch
             success: ->
                 new shuttledriveWeb.Views.TripRequestListView({collection : tripRequestCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
-            error: ->
-                alert 'An error has occurred fetching the results of your trip requests'
+            error: (data, error) ->
+                console.log  'An error has occurred fetching the results of your trip requests: ' + error 
 
     showOffersList: ->
         tripOfferCollection = new shuttledriveWeb.Collections.TripOfferCollection()
         tripOfferCollection.fetch
             success: ->
                 new shuttledriveWeb.Views.TripOfferListView({collection : tripOfferCollection, template : 'tripOfferOverviewView', el: $ '#middle-tab-content'})
-            error: ->
-                alert 'An error has occurred fetching the results of your trip offers'
+            error: (data, error) ->
+                console.log  'An error has occurred fetching the results of your trip requests: ' + error 
 
     requestDetail: (e) ->
         console.log $(e.target).parent().attr 'id'
