@@ -81,6 +81,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
 
     logoutRoute: ->
         new shuttledriveWeb.Models.Session().deleteCookie()
+        shuttledriveWeb.menu.render() # render to remove notifications after loggin out
         shuttledriveWeb.app.navigate 'login', {trigger: true}
 
     registerRoute: ->
