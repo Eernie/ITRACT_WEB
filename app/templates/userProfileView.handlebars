@@ -1,0 +1,65 @@
+<div class="well row row-fluid">
+    <div class="span2">
+        <img height="100" width="100" class="img-polaroid" src='{{user.profilePicture}}'></img>
+        <strong>
+            {{user.firstName}} {{user.lastName}}
+        </strong>
+        ({{user.gender}})
+        <Br>
+        {{user.dateOfBirth}}
+        <br>
+        <table>
+            <tr><td width="40px">
+                <div id="thumbUp" class="clickOnUp">
+                    <img class="thumbsUpDown" id="thumbUp" src="../images/thumb-up.png"></img>
+                    <small id="thumbUpValue">
+                        {{#if user.thumbUp}}
+                            {{user.thumbUp}}
+                        {{else}}
+                            0   <!-- {{user.thumbUp}} -->
+                        {{/if}}
+                    </small>
+                </div>  
+            </td><td>
+                <div id="thumbDown" class="clickOnDown">
+                    <img class="thumbsUpDown" id="thumbsDown" src="../images/thumb-down.png"></img>
+                    <small id="thumbDownValue">
+                        {{#if user.thumbDown}}
+                            {{user.thumbDown}}
+                        {{else}}
+                            0   <!-- {{user.thumbDown}} -->
+                        {{/if}}
+                    </small>
+                </div>
+            
+            </td></tr>
+        </table> 
+    </div>
+    <div class="span10 row">
+        <h3> About: </h3>
+        <div class="span10 row">
+            <div class="span6">
+                <address>
+                    <h4>Address:</h4><br>
+                    {{user.address}}<br>
+                    {{user.city}}, {{user.postalCode}}<br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                </address>
+            </div>
+            <div class="span4">
+                <h4>Trip offers:</h4>
+                {{#if tripOffer}}
+                {{else}}
+                    <small>(This user has no current tripoffers)</small>
+                {{/if}}    
+            </div>
+        </div>
+        <div class="span5">
+            <h4>Vehicle:</h4>
+            {{#if vehicle}}
+            {{else}}
+                <small>(This user has no vehicles added to his profile)</small>
+            {{/if}}
+        </div>
+    </div>
+</div>
