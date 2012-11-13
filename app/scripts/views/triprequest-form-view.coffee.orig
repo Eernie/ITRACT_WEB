@@ -4,10 +4,9 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
 
     events:
         "click #trip-request-submit": "createOnSubmit"
-        "click #origin-geolocation": "getLocationOrigin"
-        "click #destination-geolocation": "getLocationDestination"
 
     initialize: ->
+        @getLocation()
         _.bindAll @
         @render()
 
@@ -33,37 +32,25 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
 
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
-            shuttledriveWeb.app.navigate 'triprequest/' + id, {trigger: true}
+            shuttledriveWeb.app.navigate 'triprequest/'+id, {trigger: true}
         )
 
-    getLocationOrigin: ->
+<<<<<<< HEAD
+=======
+    getLocation: ->
         if(navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(@showPositionOrigin)
+            navigator.geolocation.getCurrentPosition(@showPosition)
         else
             error 'Geolocation is not supported'
     
-    showPositionOrigin: (position)->
+    showPosition: (position)->
         valueLat = position.coords.latitude 
         valueLong = position.coords.longitude
+                
         point = new google.maps.LatLng(valueLat, valueLong)
         geocoder = new google.maps.Geocoder()
         geocoder.geocode
             latLng: point
         , (results, status) ->
             $('#from').attr("value", results[0].formatted_address)
-
-    getLocationDestination: ->
-        if(navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(@showPositionDestion)
-        else
-            error 'Geolocation is not supported'
-    
-    showPositionDestion: (position)->
-        valueLat = position.coords.latitude 
-        valueLong = position.coords.longitude
-        point = new google.maps.LatLng(valueLat, valueLong)
-        geocoder = new google.maps.Geocoder()
-        geocoder.geocode
-            latLng: point
-        , (results, status) ->
-            $('#to').attr("value", results[0].formatted_address)
+>>>>>>> fd85bdd0e9f29f46bba5668da9a66029f7570473
