@@ -31,6 +31,6 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
 
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
-            shuttledriveWeb.app.navigate 'triprequest/', {trigger: true}
+            shuttledriveWeb.app.navigate 'triprequest/'+id, {trigger: true}
         )
 
