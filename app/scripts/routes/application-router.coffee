@@ -1,16 +1,19 @@
 class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     routes: 
-        "triprequest/:id": "tripRequestRoute"
+        "triprequest/:id": "tripRequestRouteWithId"
         "userprofile/:id": "userProfile"
         "tripoffer/:id": "tripOfferDetailRoute"
-        "triprequest": "indexRoute"
+        "triprequest": "tripRequestRoute"
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
         "tripoverview": "tripOverviewRoute"
         "login": "loginRoute"
+        "logout": "logoutRoute"
+        "register": "registerRoute"
         "": "indexRoute"
 
-    tripRequestRoute: (id) ->
+
+    tripRequestRouteWithId: (id) ->
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             $('#content').html('') # empty the div each time the route gets called
@@ -20,10 +23,10 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                     "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                 success: (data) ->
                     console.log data
-
                     view = new shuttledriveWeb.Views.TripRequestView({model: data})
                     $(view.render()).appendTo('#content').hide().fadeIn()
-                    matchView = new shuttledriveWeb.Views.MatchView({model: data.get('matches')})
+                    matchCollection = new shuttledriveWeb.Collections.MatchCollection data.get('matches')
+                    matchView = new shuttledriveWeb.Views.MatchView({collection: matchCollection})
                     $(matchView.render()).appendTo('#content').hide().fadeIn()
                     $('.user-popover').popover()
                 error: (data, error) ->
@@ -38,6 +41,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
 
         userProfile = new shuttledriveWeb.Models.UserProfileModel({id: id})
         userProfile.fetch
+            headers:
+                "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
             success: (data) ->
                 view = new shuttledriveWeb.Views.UserProfileView({model: data})
                 $(view.render()).appendTo('#content').hide().fadeIn()
@@ -59,15 +64,33 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     indexRoute: ->
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
-            console.log("is authenticated")
-            tripRequest = new shuttledriveWeb.Models.TripRequestModel()
-            new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
+            shuttledriveWeb.menu.render()
+            shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
-    tripOverviewRoute: ->
+    tripRequestRoute: ->
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
-            new shuttledriveWeb.Views.TripOverviewView()
+            tripRequest = new shuttledriveWeb.Models.TripRequestModel()
+            new shuttledriveWeb.Views.TripRequestFormView({model:tripRequest})
+    tripOverviewRoute: ->
+        new shuttledriveWeb.Views.TripOverviewView()
+
+    loginRoute: ->
+        session = new shuttledriveWeb.Models.Session()
+        if session.authenticated()
+            shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
         else
-            shuttledriveWeb.app.navigate 'login', {trigger: true}
+            new shuttledriveWeb.Views.LoginView()
+
+
+    logoutRoute: ->
+        new shuttledriveWeb.Models.Session().deleteCookie()
+        shuttledriveWeb.menu.logout()
+        shuttledriveWeb.app.navigate 'login', {trigger: true}
+
+    registerRoute: ->
+        newuser = new shuttledriveWeb.Models.NewUserModel()
+        new shuttledriveWeb.Views.RegisterView({model: newuser})
+

@@ -7,7 +7,7 @@
                     <div class="control-group">
                         <label class="control-label" for="from">From</label>
                         <div class="controls">
-                            <input type="text" name="OriginAddress" data-error-style="inline" id="from" placeholder="Enter your start location">
+                            <input type="text" name="originAddress" data-error-style="inline" id="from" placeholder="Enter your start location">
                         </div>
                     </div>
                 </div>
@@ -15,25 +15,28 @@
                     <div class="control-group">
                         <label class="control-label" for="to">To</label>
                         <div class="controls">
-                            <input type="text" name="DestinationAddress" data-error-style="inline" id="to" placeholder="Enter your end location">
+                            <input type="text" name="destinationAddress" data-error-style="inline" id="to" placeholder="Enter your end location">
                         </div>
                     </div>
                 </div>
                 <div class="span3">
                     <div class="control-group">
-                        <label class="control-label" for="time">Departure Time</label>
+                        <label class="control-label" for="time">Time</label>
                         <div class="input-append bootstrap-timepicker-component">
-                            <input type="text" name="time" id="offer-departure-time" readonly="readonly" class="input-small timepicker-default">
+                            <input type="text" name="time" id="time" readonly="readonly" class="input-small timepicker-default">
                             <span class="add-on">
                                 <i class="icon-time"></i>
                             </span>
                         </div>
-                        <label class="control-label" for="time">Arrival Time</label>
-                        <div class="input-append bootstrap-timepicker-component">
-                            <input type="text" name="time" id="offer-arrival-time" readonly="readonly" class="input-small timepicker-default">
-                            <span class="add-on">
-                                <i class="icon-time"></i>
-                            </span>
+                        <div class="form-inline">
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios" id="departure-time" value="departure-time" checked>
+                                Departure
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios" id="arrival-time" value="arrival-time">
+                                Arrival
+                            </label>
                         </div>
                     </div>
                 </div>

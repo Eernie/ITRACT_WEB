@@ -1,11 +1,13 @@
 <div id="notification-{{id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="notification-{{id}}" aria-hidden="true">
     <div class="modal-body">
-        id: {{id}} <br>
-        state: {{tripMatch.state}} <br>
-        TODO: Put well written message here
+        {{message}}
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger modal-dismiss" data-dismiss="modal" aria-hidden="true">Deny</button>
-        <button class="btn btn-success modal-dismiss" data-dismiss="modal" class="confirm">Confirm</button>
+        {{#if serverNeedsResponse}}
+            <button class="btn btn-danger" id="decline-notification" data-dismiss="modal" aria-hidden="true">Deny</button>
+            <button class="btn btn-success" id="accept-notification" data-dismiss="modal" class="confirm">Confirm</button>
+        {{else}}
+            <button class="btn btn-primary" id="dismiss-notification" data-dismiss="modal" class="confirm">Ok</button>
+        {{/if}}
     </div>
 </div>

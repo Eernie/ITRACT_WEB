@@ -18,8 +18,14 @@ class shuttledriveWeb.Views.LoginView extends Backbone.View
         token = "Basic "+shuttledriveWeb.Helpers.EncodingHelper.toBase64(user+":"+password)
         session = new shuttledriveWeb.Models.Session()
         session.authUser(token, (id) ->
-            session.saveCookie(id, token)
-            session = new shuttledriveWeb.Models.Session()
-            shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
+            if id is -1
+                $('#error').text("Login failed")
+                @showError
+            else
+                session.saveCookie(id, token)
+                session = new shuttledriveWeb.Models.Session()
+                shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
         )
 
+    showError: ->
+        $('#loginFailed').modal()

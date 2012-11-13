@@ -3,11 +3,16 @@
     <div class="container">
         <a class="brand" href="#">Shuttledrive</a>
         <ul class="nav">
+            {{#if loggedIn}}
             <li><a href="#tripoffer">Trip Offer</a></li>
             <li><a href="#triprequest">Trip Request</a></li>
             <li><a href="#tripoverview">My trips</a></li>
+            <li><a href="#logout">Logout</a></li>
+            {{/if}}
         </ul>
         <div class="pull-right span2" id="nots">
+
+
         </div>
     </div>
   </div>

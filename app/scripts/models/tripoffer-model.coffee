@@ -5,14 +5,12 @@ class shuttledriveWeb.Models.TripOfferModel extends Backbone.Model
         destinationLong: ''
         destinationLat: ''
         numberOfSeats: 4
-        originAddress: ''
-        destinationAddress: ''
 
     validation:
-        DestinationAddress:
+        destinationAddress:
             required: true
             msg: 'Please enter an arrival location'
-        OriginAddress:
+        originAddress:
             required: true
             msg: 'Please enter a departure location'
 

@@ -5,8 +5,7 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
         destinationLong: ''
         destinationLat: ''
         numberOfSeats: 1
-        originAddress: ''
-        destinationAddress: ''
+
 
     validation:
         destinationAddress:
@@ -42,5 +41,9 @@ class shuttledriveWeb.Models.TripRequestModel extends Backbone.Model
                 result = results[0].geometry.location
                 callback(caller, result)
             # else throw error TODO: add throw statement
+
+    sync: (method, model, options)->
+            options.headers = "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
+            Backbone.sync(method, model, options)
 
 

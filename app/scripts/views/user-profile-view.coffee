@@ -11,29 +11,43 @@ class shuttledriveWeb.Views.UserProfileView extends Backbone.View
 
 
     thumbUp: (element) ->
-        console.log @model.attributes.thumbUp
         if $('#thumbDown').attr('class') is 'clickOffDown'
-            @model.attributes.thumbDown = @model.attributes.thumbDown - 1
-            $('#thumbDownValue').html(@model.attributes.thumbDown)
-            $('#thumbDown').toggleClass('clickOffDown clickOnDown')
-        if @model.attributes.thumbUp
-            @model.attributes.thumbUp = @model.attributes.thumbUp+1
+            hasSchwitchedThumbup = true
+            @model.attributes.negative = @model.attributes.negative - 1
+        if @model.attributes.positive
+            @model.attributes.positive = @model.attributes.positive+1
         else
-            @model.attributes.thumbUp = 1
-        $('#thumbUpValue').html(@model.attributes.thumbUp)
-        $(element.currentTarget).toggleClass('clickOnUp clickOffUp')
-        
-       
-        
-    thumbDown: (element) ->
+            @model.attributes.positive = 1
+        @model.save(
+            @model.toJSON # only to save it again here, while we already fetched the model in the router
+            ,
+            success:->
+                if hasSchwitchedThumbUp
+                    $('#thumbDownValue').html(@model.attributes.negative)
+                    $('#thumbDown').toggleClass('clickOffDown clickOnDown')
+                $('#thumbUpValue').html(@model.attributes.positive)
+                $(element.currentTarget).toggleClass('clickOnUp clickOffUp')
+            error:->
+            #
+        )    
 
+    thumbDown: (element) ->
         if $('#thumbUp').attr('class') is 'clickOffUp'
-            @model.attributes.thumbUp = @model.attributes.thumbUp - 1
-            $('#thumbUpValue').html(@model.attributes.thumbUp)
-            $('#thumbUp').toggleClass('clickOffUp clickOnUp')
-        if @model.attributes.thumbDown
-            @model.attributes.thumbDown = @model.attributes.thumbDown+1
+            @model.attributes.positive = @model.attributes.positive - 1
+            hasSchwitchedThumbDown = true
+        if @model.attributes.negative
+            @model.attributes.negative = @model.attributes.negative+1
         else
-            @model.attributes.thumbDown = 1
-        $('#thumbDownValue').html(@model.attributes.thumbDown)
-        $(element.currentTarget).toggleClass('clickOnDown clickOffDown')
+            @model.attributes.negative = 1
+        @model.save(
+            @model.toJSON # only to save it again here, while we already fetched the model in the router
+            ,
+            success:->
+                if hasSchwitchedThumbDown
+                    $('#thumbUpValue').html(@model.attributes.positive)
+                    $('#thumbUp').toggleClass('clickOffUp clickOnUp')
+                $('#thumbDownValue').html(@model.attributes.negative)
+                $(element.currentTarget).toggleClass('clickOnDown clickOffDown')
+            error:->
+                #
+        )

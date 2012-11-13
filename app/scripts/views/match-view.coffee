@@ -3,32 +3,21 @@ class shuttledriveWeb.Views.MatchView extends Backbone.View
         "click .apply-join": "createOnJoin"
 
     render:  ->
-        context = {
-            'matches': @model
-        }
-        console.log @model
-        $(@el).html(Handlebars.templates['matchView'](context))
+        $(@el).html(Handlebars.templates['matchView']({'matches': @collection.toJSON()}))
 
-
-    createOnJoin: (element)->
-        id = $(element.currentTarget).attr("id")
-        match = new shuttledriveWeb.Models.TripMatchModel({id: id})
-        match.fetch # why are we fetching the match here
-            success:(data) ->
-                data.set 'matchState': 1 # and then updating it here
-                data.set 'confirm': true
-                data.save(
-                    data.toJSON # only to save it again here, while we already fetched the model in the router
-                    ,
-                    success: ->
-                        $(element.currentTarget).attr("disabled","true")
-                        $(element.currentTarget).html('&#x2713; Request sent')
-                        $(element.currentTarget).toggleClass('btn-primary btn-success')
-
-                    error: ->
-                        console.log ' error'
-                )
-
-            error:(data, error) ->
-                console.log data
+    createOnJoin: (e) ->
+        id = $(e.currentTarget).attr("id")
+        match = @collection.get(id)
+        console.log @collection
+        console.log id
+        console.log match
+        match.set('state', 1)
+        match.save(
+            match.toJSON(),
+            success: ->
+                $(e.currentTarget).attr("disabled","true")
+                $(e.currentTarget).html('&#x2713; Request sent')
+                $(e.currentTarget).toggleClass('btn-primary btn-success')
+            error: (data, error) ->
                 console.log error
+        )

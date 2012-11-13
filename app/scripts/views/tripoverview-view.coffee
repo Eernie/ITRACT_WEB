@@ -29,8 +29,8 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
         tripRequestCollection.fetch
             success: ->
                 new shuttledriveWeb.Views.TripRequestListView({collection : tripRequestCollection, template : 'tripRequestOverviewView', el: $ '#middle-tab-content'})
-            error: ->
-                alert 'An error has occurred fetching the results of your trip requests'
+            error: (data, error) ->
+                console.log  'An error has occurred fetching the results of your trip requests: ' + error 
 
     showOffersList: ->
         @clear()
@@ -38,8 +38,8 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
         tripOfferCollection.fetch
             success: ->
                 new shuttledriveWeb.Views.TripOfferListView({collection : tripOfferCollection, template : 'tripOfferOverviewView', el: $ '#middle-tab-content'})
-            error: ->
-                alert 'An error has occurred fetching the results of your trip offers'
+            error: (data, error) ->
+                console.log  'An error has occurred fetching the results of your trip requests: ' + error 
 
     clear: ->
         $('#middle-tab-content, #right-tab-content').empty()
