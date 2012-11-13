@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="styles/timepicker.css"/>
         <link rel="stylesheet" href="styles/matchview.css"/>
         <link rel="stylesheet" href="styles/userprofile.css"/>
-
+		<link rel="stylesheet" href="styles/request-overview-detail.css"/>
 
     </head>
     <body>
@@ -51,8 +51,9 @@
         <script src="scripts/vendor/backbone-validation-bootstrap.js"></script>      
         <script src="scripts/vendor/bootstrap/bootstrap-tooltip.js"></script>   
         <script src="scripts/vendor/bootstrap/bootstrap-popover.js"></script>       
-        <script src="scripts/vendor/bootstrap/bootstrap-modal.js"></script> 
-        <script src="scripts/vendor/bootstrap/bootstrap-dropdown.js"></script>       
+        <script src="scripts/vendor/bootstrap/bootstrap-modal.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-tab.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-dropdown.js"></script>
 
         <script src="scripts/main.js"></script>
         <script src="scripts/helpers/helpers.js"></script>
@@ -64,8 +65,15 @@
         <script src="scripts/views/match-view.js"></script>
         <script src="scripts/views/triprequest-view.js"></script>
         <script src="scripts/views/menu-view.js"></script>
+        
+        <script src="scripts/views/tripoverview-view.js"></script>
+        <script src="scripts/views/triprequest-listitem-view.js"></script>
+        <script src="scripts/views/triprequestlist-view.js"></script>
         <script src="scripts/views/tripoffer-view.js"></script>
-        <script src="scripts/views/user-profile-view.js"></script>
+        <script src="scripts/views/tripoffer-listitem-view.js"></script>
+        <script src="scripts/views/tripoffer-list-view.js"></script>
+        <script src="scripts/views/notification-view.js"></script>
+		<script src="scripts/views/user-profile-view.js"></script>
 		<script src="scripts/views/notification-view.js"></script>
         <script src="scripts/views/login-view.js"></script>
 
@@ -73,13 +81,17 @@
         <script src="scripts/models/tripmatches-model.js"></script>
         <script src="scripts/models/triprequest-model.js"></script>
         <script src="scripts/models/tripoffer-model.js"></script>
-        <script src="scripts/models/userprofile-model.js"></script>
+        <script src="scripts/models/notification-model.js"></script>
+		
+		        <script src="scripts/models/userprofile-model.js"></script>
 		<script src="scripts/models/notification-model.js"></script>
         <script src="scripts/models/session-model.js"></script>
 
         <!-- make sure to add your models first, otherwise your collections will throw errors -->
         <script src="scripts/collections/match-collection.js"></script>
         <script src="scripts/collections/notification-collection.js"></script>
+        <script src="scripts/collections/triprequest-collection.js"></script>
+        <script src="scripts/collections/tripoffer-collection.js"></script>
 
         <script src="scripts/routes/application-router.js"></script>
         

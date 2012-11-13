@@ -6,7 +6,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         "triprequest": "indexRoute"
         "matches": "matchesRoute"
         "tripoffer": "tripOfferRoute"
-        "login": "loginRoute"
+        "tripoverview": "tripOverviewRoute"
+		"login": "loginRoute"
         "": "indexRoute"
 
     tripRequestRoute: (id) ->
@@ -65,5 +66,5 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         else
             shuttledriveWeb.app.navigate 'login', {trigger: true}
 
-    
-
+    tripOverviewRoute: ->
+        new shuttledriveWeb.Views.TripOverviewView()
