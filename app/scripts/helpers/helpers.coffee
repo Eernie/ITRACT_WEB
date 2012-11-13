@@ -23,3 +23,6 @@ shuttledriveWeb.Helpers.TimeHelper =
         date = @createDate(timeString)
         date.setHours(date.getHours() - hours)
         @formatUnixTimestamp(date)
+
+    resolveAddress: ->
+        alert "HET WERKT!"
