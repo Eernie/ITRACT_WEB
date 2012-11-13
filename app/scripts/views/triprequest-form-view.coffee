@@ -40,5 +40,4 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
         geocoder.geocode
             latLng: point
         , (results, status) ->
-            $("#test").html results[0].formatted_address
             $('#from').attr("value", results[0].formatted_address)
