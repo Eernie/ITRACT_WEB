@@ -65,6 +65,7 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
     indexRoute: ->
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
+            console.log 'index route'
             shuttledriveWeb.menu.render()
             shuttledriveWeb.app.navigate 'tripoverview', {trigger: true}
         else
@@ -74,7 +75,8 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
         session = new shuttledriveWeb.Models.Session()
         if session.authenticated()
             tripRequest = new shuttledriveWeb.Models.TripRequestModel()
-            new shuttledriveWeb.Views.TripRequestFormView({model:tripRequest})
+            shuttledriveWeb.tripRequestFormView = new shuttledriveWeb.Views.TripRequestFormView({model: tripRequest})
+
     tripOverviewRoute: ->
         new shuttledriveWeb.Views.TripOverviewView()
 
@@ -84,7 +86,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
             shuttledriveWeb.app.navigate 'triprequest', {trigger: true}
         else
             new shuttledriveWeb.Views.LoginView()
-
 
     logoutRoute: ->
         new shuttledriveWeb.Models.Session().deleteCookie()
