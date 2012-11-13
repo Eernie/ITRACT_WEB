@@ -8,7 +8,7 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
         _.bindAll @, 'render'
         @render()
         @collection.bind 'reset remove', @update
-        setInterval (=>
+        @interval = setInterval (=>
             @collection.fetch()
         ), 10000
 
