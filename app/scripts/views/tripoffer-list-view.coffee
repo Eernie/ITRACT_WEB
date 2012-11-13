@@ -12,9 +12,14 @@ class shuttledriveWeb.Views.TripOfferListView extends Backbone.View
         template = @options.template
         context = {tripOfferCollection: tripOfferCollection.toJSON()}
         $(@el).html(Handlebars.templates[template](context))
+        @default()
+
+    default: ->
         $(".offerTab:first").trigger('click')
-        id = $(".offerTab:first").parent().attr('id').substring(6)
-        @showOffer id
+        id = $(".offerTab:first").parent().attr('id')
+        if id
+            id = id.substring(6)
+            @showOffer id
 
     offerDetail: (e) ->
         idString = $(e.target).parent().attr 'id'

@@ -23,7 +23,6 @@ class shuttledriveWeb.Routers.ApplicationRouter extends Backbone.Router
                     "Authorization": new shuttledriveWeb.Models.Session().get('access_token')
                 success: (data) ->
                     console.log data
-
                     view = new shuttledriveWeb.Views.TripRequestView({model: data})
                     $(view.render()).appendTo('#content').hide().fadeIn()
                     matchCollection = new shuttledriveWeb.Collections.MatchCollection data.get('matches')

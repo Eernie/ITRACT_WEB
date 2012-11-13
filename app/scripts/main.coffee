@@ -5,7 +5,7 @@ window.shuttledriveWeb =
     Routers: {}
     Helpers: {}
     init: ->
-        shuttledriveWeb.rootPath = 'http://localhost:9000/api'#@getRootPath()
+        shuttledriveWeb.rootPath = @getRootPath()
         shuttledriveWeb.menu = new shuttledriveWeb.Views.MenuView()
         console.log 'main'
         shuttledriveWeb.app = new shuttledriveWeb.Routers.ApplicationRouter()

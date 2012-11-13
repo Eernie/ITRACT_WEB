@@ -6,7 +6,6 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
 
     events:
         "click .nav a": "navigate"
-        #"click .requestTab": "requestDetail"
 
     initialize: ->
         _.bindAll @
@@ -25,6 +24,7 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
             @showOffersList()
 
     showRequestsList: ->
+        @clear()
         tripRequestCollection = new shuttledriveWeb.Collections.TripRequestCollection()
         tripRequestCollection.fetch
             success: ->
@@ -33,6 +33,7 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
                 console.log  'An error has occurred fetching the results of your trip requests: ' + error 
 
     showOffersList: ->
+        @clear()
         tripOfferCollection = new shuttledriveWeb.Collections.TripOfferCollection()
         tripOfferCollection.fetch
             success: ->
@@ -40,5 +41,5 @@ class shuttledriveWeb.Views.TripOverviewView extends Backbone.View
             error: (data, error) ->
                 console.log  'An error has occurred fetching the results of your trip requests: ' + error 
 
-    requestDetail: (e) ->
-        console.log $(e.target).parent().attr 'id'
+    clear: ->
+        $('#middle-tab-content, #right-tab-content').empty()

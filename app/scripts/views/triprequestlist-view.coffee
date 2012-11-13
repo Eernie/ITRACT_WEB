@@ -12,9 +12,14 @@ class shuttledriveWeb.Views.TripRequestListView extends Backbone.View
         template = @options.template
         context = {tripRequestCollection: tripRequestCollection.toJSON()}
         $(@el).html(Handlebars.templates[template](context))
+        @default()
+
+    default: ->
         $(".requestTab:first").trigger('click')
-        id = $(".requestTab:first").parent().attr('id').substring(8)
-        @showRequest id
+        id = $(".requestTab:first").parent().attr('id')
+        if id
+            id = id.substring(8)
+            @showRequest id
 
     requestDetail: (e) ->
         idString = $(e.target).parent().attr 'id'
@@ -26,3 +31,4 @@ class shuttledriveWeb.Views.TripRequestListView extends Backbone.View
         tripRequest.fetch
             success: ->
                 new shuttledriveWeb.Views.TripRequestListItemView({tripRequest : tripRequest, template : 'tripRequestListItemView', el: $ '#right-tab-content'})
+
