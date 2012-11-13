@@ -1,5 +1,6 @@
 _.extend Backbone.Validation.callbacks,
     valid: (view, attr, selector) ->
+
         control = view.$('[' + selector + '=' + attr + ']')
         group = control.parents(".control-group")
         group.removeClass("error")
@@ -18,7 +19,7 @@ _.extend Backbone.Validation.callbacks,
 
         group = control.parents(".control-group")
         group.addClass("error")
-        console.log(group)
+
 
         if control.data("error-style") == "tooltip"
             position = control.data("tooltip-position") || "right"

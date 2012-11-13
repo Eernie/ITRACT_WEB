@@ -18,8 +18,19 @@ class shuttledriveWeb.Views.TripRequestFormView extends Backbone.View
     createOnSubmit: ->
         from = $('#from').val()
         to = $('#to').val()
-        @model.set({originAddress: from, destinationAddress: to})
+        time = $('#time').val()
+        arrivalRadio = $('#arrival-time').attr('checked')
+        departureRadio = $('#departure-time').attr('checked')
+
+        if arrivalRadio is 'checked'
+            @model.set({originAddress: from, destinationAddress: to,endTimeMax:shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),  endTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
+        else if departureRadio is 'checked'
+            @model.set({originAddress: from, destinationAddress: to,startTimeMax: shuttledriveWeb.Helpers.TimeHelper.addHour(time,2),startTimeMin: shuttledriveWeb.Helpers.TimeHelper.getDate(time)})
+        else
+            @model.set({originAddress: from, destinationAddress: to})
+
 
         @model.saveWithOriginAndDestination(from, to, (id) ->
-            shuttledriveWeb.app.navigate 'triprequest/' + id, {trigger: true}
+            shuttledriveWeb.app.navigate 'triprequest/', {trigger: true}
         )
+

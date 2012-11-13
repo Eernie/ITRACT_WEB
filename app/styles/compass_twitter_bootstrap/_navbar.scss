@@ -214,7 +214,7 @@
 
 .navbar .nav {
   position: relative;
-  left: 0;
+  left: 40;
   display: block;
   float: left;
   margin: 0 10px 0 0;
@@ -230,7 +230,7 @@
 .navbar .nav > li > a {
   float: none;
   // Vertically center the text given $navbarHeight
-  padding: (($navbarHeight - $baseLineHeight) / 2) 15px (($navbarHeight - $baseLineHeight) / 2);
+  padding: (($navbarHeight - $baseLineHeight) / 2) 15px (($navbarHeight - $baseLineHeight) / 2) ;
   color: $navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 $navbarBackgroundHighlight;
