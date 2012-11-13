@@ -25,7 +25,7 @@ class shuttledriveWeb.Views.RegisterView extends Backbone.View
         dateOfBirth = $('#dateOfBirth').val()
         gender = $('#city').val()
 
-        @model.set({telephoneNr: telephoneNr, address: address, postalCode: postalCode, dateOfBirth: dateOfBirth, gender:gender, firstName:firstname, lastName: lastname, password:password, email:email})
+        @model.set({telephoneNr: telephoneNr, address: address, postalCode: postalCode, dateOfBirth: dateOfBirth, gender:gender, firstName:firstname, lastName: lastname, password:password, email:email, profilePicture: 'http://2.gravatar.com/avatar/0dff0f9ef3d64ea9bc03a755661886c9?size=420'})
         console.log(@model.isValid())
         @model.createUser((id) ->
             token = "Basic "+shuttledriveWeb.Helpers.EncodingHelper.toBase64(email+":"+password)
