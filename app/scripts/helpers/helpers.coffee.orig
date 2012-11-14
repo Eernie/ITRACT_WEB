@@ -23,13 +23,13 @@ shuttledriveWeb.Helpers.TimeHelper =
         date = @createDate(timeString)
         date.setHours(date.getHours() - hours)
         @formatUnixTimestamp(date)
-    resolveAddress: ->
-        alert "HET WERKT!"
 
+<<<<<<< HEAD
 shuttledriveWeb.Helpers.EncodingHelper =
     toBase64: (str) ->
         words = CryptoJS.enc.Latin1.parse(str)
         CryptoJS.enc.Base64.stringify(words)
-
+=======
     resolveAddress: ->
         alert "HET WERKT!"
+>>>>>>> fd85bdd0e9f29f46bba5668da9a66029f7570473
