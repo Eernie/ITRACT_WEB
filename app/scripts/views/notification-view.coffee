@@ -35,7 +35,7 @@ class shuttledriveWeb.Views.NotificationView extends Backbone.View
             userTrip = tripOffer
         else
             matchedTrip = tripOffer
-            userTrip = tripReqeust
+            userTrip = tripRequest
         context = {
             #user : new shuttledriveWeb.Models.UserModel({ id : userId})
             userTrip : userTrip.toJSON()
